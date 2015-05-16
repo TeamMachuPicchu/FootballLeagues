@@ -1,12 +1,15 @@
 ﻿namespace FootballLeagues.Data
 {
-    using Microsoft.AspNet.Identity.EntityFramework;
-    using System.Data.Entity;
-    using FootballLeagues.Data.Models;
-    using FootballLeagues.Data.Migrations;
-    using System.Linq;
-    using FootballLeagues.Data.Models.Contracts;
     using System;
+    using System.Linq;
+    using System.Data.Entity;
+
+    using Microsoft.AspNet.Identity.EntityFramework;
+    
+    using Models;
+    using Migrations;
+    using Models.Contracts;
+    
 
     public class FootballDbContext : IdentityDbContext<ApplicationUser>
     {
