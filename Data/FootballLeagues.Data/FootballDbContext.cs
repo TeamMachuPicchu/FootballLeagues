@@ -36,6 +36,7 @@
         public DbSet<Tag> Tags { get; set; }
         public DbSet<Team> Teams { get; set; }
         public DbSet<Town> Towns { get; set; }
+        public DbSet<LeaguesSeasons> LeaguesSeasons { get; set; }
 
         public override int SaveChanges()
         {

@@ -107,6 +107,11 @@ namespace FootballLeagues.Data.Common.UnitOfWork
             get { return this.GetRepository<ApplicationUser>(); }
         }
 
+        public IDeletableEntityRepository<LeaguesSeasons> LeaguesSeasons
+        {
+            get { return this.GetRepository<LeaguesSeasons>(); }
+        }
+
         public void SaveChanges()
         {
             this.dbContext.SaveChanges();
