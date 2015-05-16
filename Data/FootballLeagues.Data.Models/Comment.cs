@@ -1,16 +1,15 @@
-﻿using FootballLeagues.Data.Models.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FootballLeagues.Data.Models
+﻿namespace FootballLeagues.Data.Models
 {
+    using System.ComponentModel.DataAnnotations;
+
+    using Contracts;
+
     public class Comment : BaseModel
     {
         public int Id { get; set; }
 
+        [Required]
+        [MaxLength(500)]
         public string Content { get; set; }
 
         public int TargetId { get; set; }

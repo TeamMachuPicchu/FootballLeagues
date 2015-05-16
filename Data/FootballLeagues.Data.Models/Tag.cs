@@ -1,12 +1,7 @@
-﻿using FootballLeagues.Data.Models.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FootballLeagues.Data.Models
+﻿namespace FootballLeagues.Data.Models
 {
+    using Contracts;
+
     public class Tag : BaseModel
     {
         public int Id { get; set; }

@@ -1,15 +1,13 @@
-﻿using FootballLeagues.Data.Common.Repositories;
-using FootballLeagues.Data.Common.Repository;
-using FootballLeagues.Data.Models;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FootballLeagues.Data.Common.UnitOfWork
+﻿namespace FootballLeagues.Data.Common.UnitOfWork
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Data.Entity;
+
+    using Models;
+    using Repositories;
+    using Repositories;
+
     public class FootballData : IFootballData
     {
         private readonly DbContext dbContext;

@@ -1,16 +1,15 @@
-﻿using FootballLeagues.Data.Models.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FootballLeagues.Data.Models
+﻿namespace FootballLeagues.Data.Models
 {
+    using System;
+    using System.ComponentModel.DataAnnotations;
+
+    using Contracts;
+
     public abstract class Person : BaseModel
     {
         public int Id { get; set; }
 
+        [Required]
         public string Name { get; set; }
 
         public string Nickname { get; set; }

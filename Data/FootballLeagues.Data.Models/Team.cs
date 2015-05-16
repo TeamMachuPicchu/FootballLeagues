@@ -1,12 +1,11 @@
-﻿using FootballLeagues.Data.Models.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FootballLeagues.Data.Models
+﻿namespace FootballLeagues.Data.Models
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+
+    using Contracts;
+
     public class Team : BaseModel
     {
         public Team()
@@ -20,6 +19,8 @@ namespace FootballLeagues.Data.Models
 
         public int Id { get; set; }
 
+        [Required]
+        [MaxLength(30)]
         public string Name { get; set; }
 
         public string Nickname { get; set; }
