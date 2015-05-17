@@ -32,7 +32,7 @@ namespace FootballLeagues.Web.Utils
         //public int Goals { get; set; }
         public static int GetTotalPlayerActionsByGameStatsId(int playerId, int gameStatsId, FootballLeagues.Data.Models.Action action)
         {
-            int result = data.GamesStats.All().Where(gs => gs.Id == gameStatsId && gs.PlayerId == playerId).Count(gs => (int)gs.Action == (int)FootballLeagues.Data.Models.Action.Goal);
+            int result = data.GamesStats.All().Where(gs => gs.Id == gameStatsId && gs.PlayerId == playerId).Count(gs => (int)gs.Action == (int)action);
 
             return result;
         }
@@ -43,7 +43,7 @@ namespace FootballLeagues.Web.Utils
 
             foreach (var id in gameStatsIds)
             {
-                result += data.GamesStats.All().Where(gs => gs.Id == id && gs.PlayerId == playerId).Count(gs => (int)gs.Action == (int)FootballLeagues.Data.Models.Action.Goal);
+                result += data.GamesStats.All().Where(gs => gs.Id == id && gs.PlayerId == playerId).Count(gs => (int)gs.Action == (int)action);
             }
 
             return result;

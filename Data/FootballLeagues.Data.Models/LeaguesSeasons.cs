@@ -1,6 +1,7 @@
-﻿namespace FootballLeagues.Data.Models
+﻿using FootballLeagues.Data.Models.Contracts;
+namespace FootballLeagues.Data.Models
 {
-    public class LeaguesSeasons
+    public class LeaguesSeasons : BaseModel
     {
         public int Id { get; set; }
 

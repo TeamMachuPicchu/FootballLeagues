@@ -16,7 +16,7 @@ namespace FootballLeagues.Web.Areas.User
         {
             context.MapRoute(
                 "User_Player_Statistics_League",
-                "statistics/player/{playerName}/league/{leagueName}",
+                "{controller}/player/{playerName}/league/{leagueName}",
                 new { action = "PlayerLeague", playerName = @"\w+", leagueName = @"\w+" }
             );
 

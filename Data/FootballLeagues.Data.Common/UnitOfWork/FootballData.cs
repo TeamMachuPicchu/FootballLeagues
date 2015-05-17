@@ -7,6 +7,7 @@
     using Models;
     using Repositories;
     using Repositories;
+    using FootballLeagues.Data.Models.Contracts;
 
     public class FootballData : IFootballData
     {
@@ -115,11 +116,11 @@
             this.dbContext.SaveChanges();
         }
 
-        private IDeletableEntityRepository<T> GetRepository<T>() where T : class
+        private IDeletableEntityRepository<T> GetRepository<T>() where T : class, IDeletableEntity
         {
             if (!this.repositories.ContainsKey(typeof(T)))
             {
-                var type = typeof(GenericRepository<T>);
+                var type = typeof(DeletableEntityRepository<T>);
                 this.repositories.Add(typeof(T),
                     Activator.CreateInstance(type, this.dbContext));
             }
