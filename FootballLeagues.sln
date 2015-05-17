@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{9EF30A3B-F483-4DF4-AB19-75BEDD21C45A}"
 EndProject
@@ -14,6 +14,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FootballLeagues.Data.Models", "Data\FootballLeagues.Data.Models\FootballLeagues.Data.Models.csproj", "{1BD4B1B4-26E5-421C-BE5B-19B22112D9D1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FootballLeagues.Web", "Web\FootballLeagues.Web\FootballLeagues.Web.csproj", "{448A90A9-D335-47B3-812C-83D842626BE0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FootballLeagues.Web.Infrastructure", "Web\FootballLeagues.Web.Infrastructure\FootballLeagues.Web.Infrastructure.csproj", "{EEC380DB-CF38-4A82-B0CA-ED20DC1828F8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,6 +39,10 @@ Global
 		{448A90A9-D335-47B3-812C-83D842626BE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{448A90A9-D335-47B3-812C-83D842626BE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{448A90A9-D335-47B3-812C-83D842626BE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEC380DB-CF38-4A82-B0CA-ED20DC1828F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEC380DB-CF38-4A82-B0CA-ED20DC1828F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEC380DB-CF38-4A82-B0CA-ED20DC1828F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEC380DB-CF38-4A82-B0CA-ED20DC1828F8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -46,5 +52,6 @@ Global
 		{ADD19F73-1E28-4182-8284-ABBF8C605A2D} = {9EF30A3B-F483-4DF4-AB19-75BEDD21C45A}
 		{1BD4B1B4-26E5-421C-BE5B-19B22112D9D1} = {9EF30A3B-F483-4DF4-AB19-75BEDD21C45A}
 		{448A90A9-D335-47B3-812C-83D842626BE0} = {733221F6-CD50-4BB6-8D61-A9F25B774E42}
+		{EEC380DB-CF38-4A82-B0CA-ED20DC1828F8} = {733221F6-CD50-4BB6-8D61-A9F25B774E42}
 	EndGlobalSection
 EndGlobal

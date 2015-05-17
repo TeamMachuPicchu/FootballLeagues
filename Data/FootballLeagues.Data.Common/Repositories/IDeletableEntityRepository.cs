@@ -1,4 +1,4 @@
-﻿namespace FootballLeagues.Data.Common.Repository
+﻿namespace FootballLeagues.Data.Common.Repositories
 {
     using FootballLeagues.Data.Common.Repositories;
     using System.Linq;

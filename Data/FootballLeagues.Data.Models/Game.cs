@@ -1,12 +1,9 @@
-﻿using FootballLeagues.Data.Models.Contracts;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-
-namespace FootballLeagues.Data.Models
+﻿namespace FootballLeagues.Data.Models
 {
+    using System;
+
+    using Contracts;
+
     public class Game : BaseModel
     {
         public int Id { get; set; }

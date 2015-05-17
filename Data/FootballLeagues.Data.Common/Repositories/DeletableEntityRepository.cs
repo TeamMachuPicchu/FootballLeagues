@@ -1,9 +1,8 @@
-﻿namespace FootballLeagues.Data.Common.Repository
+﻿namespace FootballLeagues.Data.Common.Repositories
 {
-    using FootballLeagues.Data.Common.Repositories;
-    using FootballLeagues.Data.Models.Contracts;
     using System.Data.Entity;
     using System.Linq;
+    using Models.Contracts;
 
     public class DeletableEntityRepository<T> : GenericRepository<T>, IDeletableEntityRepository<T>
         where T : class, IDeletableEntity

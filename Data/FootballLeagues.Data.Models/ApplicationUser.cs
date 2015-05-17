@@ -1,6 +1,6 @@
 ﻿namespace FootballLeagues.Data.Models
 {
-    using FootballLeagues.Data.Models.Contracts;
+    using Contracts;
     using Microsoft.AspNet.Identity.EntityFramework;
     using System;
     using System.ComponentModel.DataAnnotations.Schema;

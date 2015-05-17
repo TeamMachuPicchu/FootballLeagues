@@ -1,15 +1,14 @@
-﻿using FootballLeagues.Data.Models.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace FootballLeagues.Data.Models
+﻿namespace FootballLeagues.Data.Models
 {
+    using System.ComponentModel.DataAnnotations;
+    using Contracts;
+
     public class Stadium : BaseModel
     {
         public int Id { get; set; }
-
+    
+        [Required]
+        [MaxLength(30)]
         public string Name { get; set; }
 
         public int Capacity { get; set; }
