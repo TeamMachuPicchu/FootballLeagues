@@ -11,7 +11,21 @@ namespace FootballLeagues.Data.Migrations
         }
 
         protected override void Seed(FootballDbContext context)
-        {
+        {/*
+            using (TextFieldParser parser = new TextFieldParser(@"..\..\Files\E0.csv"))
+            {
+                parser.TextFieldType = FieldType.Delimited;
+                parser.SetDelimiters(",");
+                while (!parser.EndOfData)
+                {
+                    //Processing row
+                    string[] fields = parser.ReadFields();
+                    foreach (string field in fields)
+                    {
+                        Console.WriteLine(field);
+                    }
+                }
+            }*/
         }
     }
 }
