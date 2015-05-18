@@ -1,6 +1,12 @@
 namespace FootballLeagues.Data.Migrations
 {
     using System.Data.Entity.Migrations;
+<<<<<<< Updated upstream
+=======
+    using System.IO;
+
+    using Models;
+>>>>>>> Stashed changes
 
     internal sealed class Configuration : DbMigrationsConfiguration<FootballDbContext>
     {
@@ -11,6 +17,7 @@ namespace FootballLeagues.Data.Migrations
         }
 
         protected override void Seed(FootballDbContext context)
+<<<<<<< Updated upstream
         {/*
             using (TextFieldParser parser = new TextFieldParser(@"..\..\Files\E0.csv"))
             {
@@ -24,6 +31,43 @@ namespace FootballLeagues.Data.Migrations
                     {
                         Console.WriteLine(field);
                     }
+=======
+        {
+            using (var reader = new StreamReader(@"..\..\Files\countries.txt"))
+            {
+                while (!reader.EndOfStream)
+                {
+                    var line = reader.ReadLine();
+                    var countryAndCode = line.Split(';');
+                    var country = countryAndCode[0];
+
+                    context.Countries.Add(new Country()
+                    {
+                        Name = country
+                    });
+                }
+            }
+
+            using (var parser = new StreamReader(@"..\..\Files\Teams-Towns-Stadiums-Capacity-OrderedByClub.txt"))
+            {
+                while (!parser.EndOfStream)
+                {
+                    //Processing row
+                    var line = parser.ReadLine();
+                    var stats = line.Split(',');
+                }
+            }
+
+            /*using (var reader = new StreamReader(@"..\..\Files\Teams.txt"))
+            {
+                while (!reader.EndOfStream)
+                {
+                    var team = reader.ReadLine();
+                    context.Teams.Add(new Team()
+                    {
+                        Name = team
+                    });
+>>>>>>> Stashed changes
                 }
             }*/
         }
