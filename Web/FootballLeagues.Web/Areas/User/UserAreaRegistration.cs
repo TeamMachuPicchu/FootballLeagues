@@ -16,13 +16,13 @@ namespace FootballLeagues.Web.Areas.User
         {
             context.MapRoute(
                 "User_Player_Statistics_League",
-                "{controller}/player/{playerName}/league/{leagueName}",
+                "user/{controller}/player/{playerName}/league/{leagueName}",
                 new { action = "PlayerLeague", playerName = @"\w+", leagueName = @"\w+" }
             );
 
             context.MapRoute(
                 "User_default",
-                "{controller}/{action}/{id}",
+                "user/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional }
             );
         }
