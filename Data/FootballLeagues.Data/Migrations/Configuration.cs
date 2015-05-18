@@ -1,12 +1,8 @@
 namespace FootballLeagues.Data.Migrations
 {
     using System.Data.Entity.Migrations;
-<<<<<<< Updated upstream
-=======
     using System.IO;
-
     using Models;
->>>>>>> Stashed changes
 
     internal sealed class Configuration : DbMigrationsConfiguration<FootballDbContext>
     {
@@ -17,7 +13,6 @@ namespace FootballLeagues.Data.Migrations
         }
 
         protected override void Seed(FootballDbContext context)
-<<<<<<< Updated upstream
         {/*
             using (TextFieldParser parser = new TextFieldParser(@"..\..\Files\E0.csv"))
             {

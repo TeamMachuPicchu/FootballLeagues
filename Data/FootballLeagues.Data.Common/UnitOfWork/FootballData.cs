@@ -3,16 +3,9 @@
     using System;
     using System.Collections.Generic;
     using System.Data.Entity;
-
     using Models;
-<<<<<<< Updated upstream
-    using Repositories;
     using Repositories;
     using FootballLeagues.Data.Models.Contracts;
-=======
-    using Models.Contracts;
-    using Repositories;
->>>>>>> Stashed changes
 
     public class FootballData : IFootballData
     {

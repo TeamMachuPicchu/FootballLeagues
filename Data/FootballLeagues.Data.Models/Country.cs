@@ -2,12 +2,8 @@
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-<<<<<<< Updated upstream
-
-=======
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data;
->>>>>>> Stashed changes
     using Contracts;
 
     public class Country : BaseModel
