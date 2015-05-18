@@ -25,7 +25,7 @@
 
         public string Nickname { get; set; }
 
-        public DateTime Established { get; set; }
+        public DateTime? Established { get; set; }
 
         public string Logo { get; set; }
 
