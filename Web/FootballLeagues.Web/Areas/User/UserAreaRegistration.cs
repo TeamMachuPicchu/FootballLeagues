@@ -15,6 +15,12 @@ namespace FootballLeagues.Web.Areas.User
         public override void RegisterArea(AreaRegistrationContext context) 
         {
             context.MapRoute(
+                "User_Player_Statistics_Round",
+                "user/{controller}/player/{playerName}/league/{leagueName}/season/{season}/round/{round}",
+                new { action = "PlayerRound", playerName = @"\w+", leagueName = @"\w+", season = @"\w+", round = @"\w+" }
+            );
+
+            context.MapRoute(
                 "User_Player_Statistics_League",
                 "user/{controller}/player/{playerName}/league/{leagueName}",
                 new { action = "PlayerLeague", playerName = @"\w+", leagueName = @"\w+" }

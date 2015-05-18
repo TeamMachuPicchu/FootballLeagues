@@ -9,6 +9,13 @@
     {
         private static readonly FootballData data = new FootballData();
 
+        public static int GetRoundId(int round, int leaguesSeasonsId)
+        {
+            var id = data.Rounds.All().FirstOrDefault(r => r.LeaguesSeasonsId == leaguesSeasonsId && r.Number == round).Id;
+
+            return id;
+        }
+
         public static List<int> GetIdsByLeaguesSeasonsId(int leaguesSeasonsId)
         {
             var ids = data.Rounds.All().Where(r => r.LeaguesSeasonsId == leaguesSeasonsId).Select(r => r.Id).ToList();

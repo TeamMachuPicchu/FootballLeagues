@@ -190,6 +190,7 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\PlayerStatistics.cs" />
+    <Compile Include="Models\SeasonPeriod.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Utils\Games.cs" />
@@ -198,6 +199,7 @@
     <Compile Include="Utils\LeaguesSeasons.cs" />
     <Compile Include="Utils\Players.cs" />
     <Compile Include="Utils\Rounds.cs" />
+    <Compile Include="Utils\Seasons.cs" />
     <Compile Include="Utils\Statistics.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -266,6 +268,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\User\Models\" />
+    <Folder Include="Utils\Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
