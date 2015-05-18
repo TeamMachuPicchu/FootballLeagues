@@ -32,7 +32,7 @@
 
         public DbSet<News> News { get; set; }
 
-        public DbSet<Owner> Owners { get; set; }
+        // public DbSet<Owner> Owners { get; set; }
 
         public DbSet<Player> Players { get; set; }
 

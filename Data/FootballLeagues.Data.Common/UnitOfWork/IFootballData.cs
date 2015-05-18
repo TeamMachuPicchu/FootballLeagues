@@ -19,7 +19,7 @@
 
         IDeletableEntityRepository<News> News { get;  }
 
-        IDeletableEntityRepository<Owner> Owners { get;  }
+        // IDeletableEntityRepository<Owner> Owners { get;  }
 
         IDeletableEntityRepository<Player> Players { get;  }
 

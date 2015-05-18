@@ -35,7 +35,7 @@
 
         public int OwnerId { get; set; }
 
-        public virtual Owner Owner { get; set; }
+        // public virtual Owner Owner { get; set; }
 
         public int ManagerId { get; set; }
 

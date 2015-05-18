@@ -1,0 +1,92 @@
+-1,Crown Ground,Accrington,5057 ,Accrington Stanley,1891,League Two,John Coleman,ENGLAND,12-10-1962,18-09-2014,
+-2,Dean Court,Bournemouth,12000 ,AFC Bournemouth,1890,Championship,Eddie Howe,ENGLAND,29-11-1977,13-10-2012
+-3,Kingsmeadow,London,4850 ,AFC Wimbledon,2002,League Two,Neal Ardley,ENGLAND,1-09-1972,10-10-2012
+-4,Emirates Stadium,London,60432 ,Arsenal,1886,Premier League,Arsène Wenger,FRANCE,22-10-1949,1-10-1996
+-5,Villa Park,Birmingham,42785 ,Aston Villa,1874,Premier League,Tim Sherwood,ENGLAND,6-02-1969,14-02-2015
+-6,Oakwell,Barnsley,23009 ,Barnsley,1887,League One,Lee Johnson,ENGLAND,7-06-1981,25-02-2015
+-7,St Andrew's,Birmingham,30016 ,Birmingham City,1875,Championship,Gary Rowett,ENGLAND,6-03-1974,27-10-2014
+-8,Ewood Park,Blackburn,31367,Blackburn Rovers,1875,Championship,Gary Bowyer,ENGLAND,26-06-1971,19-03-2013
+-9,Bloomfield Road,Blackpool,16750,Blackpool,1877,Championship,Vacant,ENGLAND,9-05-2015,9-05-2015
+-10,Macron Stadium,Bolton,28723 ,Bolton Wanderers,1874,Championship,Neil Lennon,NORTHERN IRELAND,25-06-1971,12-10-2014
+-11,Valley Parade,Bradford,25136 ,Bradford City,1903,League One,Phil Parkinson,ENGLAND,1-12-1967,28-08-2011
+-12,Griffin Park,London,12763 ,Brentford,1889,Championship,Mark Warburton,ENGLAND,6-09-1962,10-12-2013
+-13,Falmer Stadium,Brighton,30278 ,Brighton & Hove Albion,1901,Championship,Chris Hughton,IRELAND,11-12-1958,31-12-2014
+-14,Ashton Gate Stadium,Bristol,15000 ,Bristol City,1894,League One,Steve Cotterill,ENGLAND,20-07-1964,3-12-2013
+-15,Turf Moor,Burnley,22546 ,Burnley,1882,Premier League,Sean Dyche,ENGLAND,28-06-1971,30-10-2012
+-16,Pirelli Stadium,Burton-upon-Trent,6912 ,Burton Albion,1950,League Two,Jimmy Floyd Hasselbaink,NETHERLANDS,27-03-1972,13-11-2014
+-17,Gigg Lane,Bury,11640 ,Bury,1885,League Two,David Flitcroft,ENGLAND,14-01-1974,9-12-2013
+-18,Abbey Stadium,Cambridge,9617 ,Cambridge United,1909,League Two,Richard Money,ENGLAND,13-10-1955,4-10-2012
+-19,Cardiff City Stadium,Cardiff,33300 ,Cardiff City,1899,Championship,Russell Slade,ENGLAND,10-10-1960,6-10-2014
+-20,Brunton Park,Carlisle,18202 ,Carlisle United,1904,League Two,Keith Curle,ENGLAND,14-11-1963,19-09-20142014
+-21,The Valley,London,27111 ,Charlton Athletic,1905,Championship,Guy Luzon,ISRAEL,7-08-1975,13-01-2015
+-22,Stamford Bridge,London,41623 ,Chelsea,1905,Premier League,José Mourinho,PORTUGAL,26-01-1963,3-06-2013
+-23,Whaddon Road,Cheltenham,7066 ,Cheltenham Town,1887,League Two,Gary Johnson,ENGLAND,28-09-1955,30-03-2015
+-24,Proact Stadium,Chesterfield,10400 ,Chesterfield,1866,League One,Dean Saunders,WALES,21-06-1964,13-05-2015
+-25,Colchester Community Stadium,Colchester,10105 ,Colchester United,1937,League One,Tony Humes,ENGLAND,19-03-1966,1-09-2014
+-26,Ricoh Arena,Coventry,32500 ,Coventry City,1883,League One,Tony Mowbray,ENGLAND,22-11-1963,3-03-2015
+-27,Broadfield Stadium,Crawley,5996 ,Crawley Town,1896,League One,Vacant,ENGLAND,13-05-2015,13-05-2015
+-28,Alexandra Stadium,Crewe,10066 ,Crewe Alexandra,1877,League One,Steve Davis,ENGLAND,26-07-1965,10-11-2011
+-29,Selhurst Park,London,26309 ,Crystal Palace,1905,Premier League,Alan Pardew,ENGLAND,18-07-1961,3-01-2015
+-30,Victoria Road,Dagenham,6000 ,Dagenham & Redbridge,1992,League Two,Wayne Burnett,ENGLAND,4-09-1971,26-02-2013
+-31,Pride Park Stadium,Derby,33597 ,Derby County,1884,Championship,Steve McClaren,ENGLAND,3-05-1961,2-10-2013
+-32,Keepmoat Stadium,Doncaster,15231 ,Doncaster Rovers,1879,League One,Paul Dickov,SCOTLAND,1-11-1972,20-05-2013
+-33,Goodison Park,Liverpool,40569,Everton,1878,Premier League,Roberto Martínez,SPAIN,13-07-1973,1-07-2013
+-34,St James Park,Exeter,8830 ,Exeter City,1904,League Two,Paul Tisdale,ENGLAND,14-01-1973,26-06-2006
+-35 ,Highbury Stadium,Fleetwood,5311 ,Fleetwood Town,1908,League One,Graham Alexander,SCOTLAND,10-10-1971,6-12-2012
+-36,Craven Cottage,London,25678 ,Fulham,1879,Championship,Kit Symons,WALES,8-03-1971,18-09-2014
+-37,Priestfield Stadium,Gillingham,11582 ,Gillingham,1893,League One,Justin Edinburgh,ENGLAND,18-12-1969,7-02-2015
+-38,Victoria Park,Hartlepool,7833 ,Hartlepool United,1908,League Two,Ronnie Moore,ENGLAND,29-01-1953,16-12-2014
+-39,John Smith's Stadium,Huddersfield,24500 ,Huddersfield Town,1908,Championship,Chris Powell,ENGLAND,8-09-1969,3-09-2014
+-40,KC Stadium,Kingston upon Hull,25404 ,Hull City,1904,Premier League,Steve Bruce,ENGLAND,31-12-1960,8-06-2012
+-41,Portman Road,Ipswich,30300 ,Ipswich Town,1878,Championship,Mick McCarthy,IRELAND,7-02-1959,1-11-2012
+-42,Elland Road,Leeds,37900,Leeds United,1919,Championship,Neil Redfearn,ENGLAND,20-06-1965,1-11-2014
+-43,King Power Stadium,Leicester,32500 ,Leicester City,1884,Premier League,Nigel Pearson,ENGLAND,21-08-1963,15-11-2011
+-44,Brisbane Road,London,9271 ,Leyton Orient,1881,League One,Vacant,ENGLAND,13-05-2015,13-05-2015
+-45,Anfield,Liverpool,45362 ,Liverpool,1892,Premier League,Brendan Rodgers,NORTHERN IRELAND,26-01-1973,1-06-2012
+-46,Kenilworth Road,Luton,10356 ,Luton Town,1885,League Two,John Still,ENGLAND,24-04-1950,26-02-2013
+-47,City of Manchester Stadium,Manchester,48000,Manchester City,1880,Premier League,Manuel Pellegrini,CHILE,16-09-1953,24-06-2013
+-48,Old Trafford,Manchester,76100 ,Manchester United,1878,Premier League,Louis van Gaal,NETHERLANDS,8-08-1951,14-07-2014
+-49,Field Mill,Mansfield,10000 ,Mansfield Town,1897,League Two,Adam Murray*,ENGLAND,30-09-1981,21-11-2014
+-50,Riverside Stadium,Middlesbrough,35100 ,Middlesbrough,1876,Championship,Aitor Karanka,SPAIN,18-09-1973,13-11-2013
+-51,The Den,London,20146 ,Millwall,1885,Championship,Neil Harris,ENGLAND,3-07-1977,10-03-2015
+-52,Stadium mk,Milton Keynes,30500 ,Milton Keynes Dons,2004,League One,Karl Robinson,ENGLAND,13-09-1980,10-05-2010
+-53,Globe Arena,Morecambe,6476 ,Morecambe,1920,League Two,Jim Bentley,ENGLAND,11-06-1976,13-05-2011
+-54,St James' Park,Newcastle-upon-Tyne,52401 ,Newcastle United,1892,Premier League,John Carver,ENGLAND,16-01-1965,3-01-2015
+-55 ,Rodney Parade,Newport,7012 ,Newport County,1912,League Two,Terry Butcher,ENGLAND,28-12-1958,2-05-2015
+-56,Sixfields Stadium,Northampton,7653 ,Northampton Town,1897,League Two,Chris Wilder,ENGLAND,23-09-1967,27-01-2014
+-57,Carrow Road,Norwich,27220 ,Norwich City,1902,Championship,Alex Neil,SCOTLAND,9-06-1981,9-01-2015
+-58,City Ground,Nottingham,30576 ,Nottingham Forest,1865,Championship,Dougie Freedman,SCOTLAND,25-05-1974,1-02-2015
+-59,Meadow Lane,Nottingham,20300 ,Notts County,1862,League One,Ricardo Moniz,NETHERLANDS,17-06-1964,7-04-2015
+-60,Boundary Park,Oldham,10638 ,Oldham Athletic,1895,League One,Dean Holden,ENGLAND,15-09-1979,25-02-2015
+-61,Kassam Stadium,Oxford,12500 ,Oxford United,1893,League Two,Michael Appleton,ENGLAND,4-12-1975,4-07-2014
+-62,London Road,Peterborough,14319 ,Peterborough United,1934,League One,Dave Robertson,ENGLAND,4-12-1974,21-02-2015 
+-64,Vale Park,Stoke-on-Trent,18947 ,Port Vale,1876,League One,Rob Page,WALES,3-09-1974,18-09-2014
+-63,Home Park,Plymouth,16388 ,Plymouth Argyle,1886,League Two,John Sheridan,IRELAND,1-10-1964,6-01-2013
+-65,Fratton Park,Portsmouth,20700 ,Portsmouth,1898,League Two,Paul Cook,ENGLAND,22-02-1967,12-05-2015
+-66,Deepdale,Preston,23408 ,Preston North End,1863,League One,Simon Grayson,ENGLAND,19-12-1969,18-02-2013
+-67,Loftus Road,London,18360 ,Queens Park Rangers,1882,Premier League,Chris Ramsey,ENGLAND,28-04-1962,3-02-2015
+-68,Madejski Stadium,Reading,24200 ,Reading,1871,Championship,Steve Clarke,SCOTLAND,29-08-1963,16-12-2014
+-69,Spotland,Rochdale,10249 ,Rochdale,1907,League One,Keith Hill,ENGLAND,17-05-1969,22-01-2013
+-70,New York Stadium,Rotherham,12021 ,Rotherham United,1870,Championship,Steve Evans,SCOTLAND,30-10-1962,9-04-2012
+-71,Glanford Park,Scunthorpe,9183 ,Scunthorpe United,1899,League One,Mark Robins,ENGLAND,22-12-1969,13-10-2014
+-72,Bramall Lane,Sheffield,32702 ,Sheffield United,1889,League One,Nigel Clough,ENGLAND,19-03-1966,23-10-2013
+-73,Hillsborough Stadium,Sheffield,39812,Sheffield Wednesday,1867,Championship,Stuart Gray,ENGLAND,19-04-1960,2-12-2013
+-74,Greenhous Meadow,Shrewsbury,9875 ,Shrewsbury Town,1886,League Two,Micky Mellon,SCOTLAND,18-03-1972,12-05-2014
+-75,St Mary's Stadium,Southampton,32689 ,Southampton,1885,Premier League,Ronald Koeman,NETHERLANDS,21-03-1963,16-06-2014
+-76,Roots Hall,Southend,12392 ,Southend United,1906,League Two,Phil Brown,ENGLAND,30-05-1959,25-03-2013
+-77,Broadhall Way,Stevenage,6920 ,Stevenage,1894,League Two,Graham Westley,ENGLAND,4-03-1968,30-03-2013
+-78,Britannia Stadium,Stoke-on-Trent,28323 ,Stoke City,1863,Premier League,Mark Hughes,WALES,1-11-1963,30-05-2013
+-79,Stadium of Light,Sunderland,49000,Sunderland,1879,Premier League,Dick Advocaat,NETHERLANDS,27-09-1947,17-03-2015
+-80,Liberty Stadium,Swansea,20700,Swansea City,1912,Premier League,Garry Monk,ENGLAND,6-03-1979,4-02-2014
+-81,County Ground,Swindon,15728,Swindon Town,1879,League One,Mark Cooper,ENGLAND,18-12-1968,13-07-2013
+-82,White Hart Lane,London,36274,Tottenham Hotspur,1882,Premier League,Mauricio Pochettino,ARGENTINA,2-03-1972,27-05-2014
+-83,Prenton Park,Birkenhead,16587,Tranmere Rovers,1884,League Two,Gary Brabin,ENGLAND,9-12-1970,5-05-2015
+-84,Bescot Stadium,Walsall,11300,Walsall,1888,League One,Dean Smith,ENGLAND,19-03-1971,5-01-2011
+-85,Vicarage Road,Watford,20877,Watford,1881,Championship,Slaviša Jokanović,SERBIA,16-08-1968,7-10-2014
+-86,The Hawthorns,West Bromwich,26500,West Bromwich Albion,1878,Premier League,Tony Pulis,WALES,16-01-1958,1-01-2015
+-87,Boleyn Ground,London,35333,West Ham United,1895,Premier League,Sam Allardyce,ENGLAND,19-10-1954,1-06-2011
+-88,DW Stadium,Wigan,25023,Wigan Athletic,1932,Championship,Gary Caldwell,SCOTLAND,12-04-1982,7-04-2015
+-89,Molineux,Wolverhampton,31700,Wolverhampton Wanderers,1877,Championship,Kenny Jackett,WALES,5-01-1962,31-05-2013
+-90,Adams Park,Wycombe,10300,Wycombe Wanderers,1887,League Two,Gareth Ainsworth,ENGLAND,10-05-1973,24-09-2012
+-91,Huish Park,Yeovil,9665,Yeovil Town,1895,League One,Paul Sturrock,SCOTLAND,10-10-1956,9-04-2015
+-92,Bootham Crescent,York,7872,York City,1908,League Two,Russ Wilcox,ENGLAND,25-03-1964,15-10-2014

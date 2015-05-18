@@ -59,10 +59,10 @@
             get { return this.GetRepository<News>(); }
         }
 
-        public IDeletableEntityRepository<Owner> Owners
+        /*public IDeletableEntityRepository<Owner> Owners
         {
             get { return this.GetRepository<Owner>(); }
-        }
+        }*/
 
         public IDeletableEntityRepository<Player> Players
         {

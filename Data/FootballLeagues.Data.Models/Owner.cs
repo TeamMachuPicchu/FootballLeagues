@@ -1,4 +1,4 @@
-﻿namespace FootballLeagues.Data.Models
+﻿/*namespace FootballLeagues.Data.Models
 {
     using System.Collections.Generic;
 
@@ -6,4 +6,4 @@
     {
         public virtual ICollection<Team> Teams { get; set; }
     }
-}
+}*/
