@@ -46,6 +46,67 @@ namespace FootballLeagues.Data.Migrations
                 }
             }
 
+            for (int startYear = 2000; startYear < 2015; startYear++)
+            {
+                var season = new Season()
+                {
+                    StartYear = startYear,
+                    EndYear = startYear + 1
+                };
+
+                context.Seasons.Add(season);
+            }
+
+            context.SaveChanges();
+
+            var leagues = new HashSet<League>();
+
+            foreach (var league in context.Leagues)
+            {
+                leagues.Add(league);
+            }
+
+            foreach (var season in context.Seasons)
+            {
+                foreach (var league in leagues)
+                {
+                    var leagueSeason = new LeaguesSeasons()
+                    {
+                        League = league,
+                        Season = season
+                    };
+
+                    context.LeaguesSeasons.Add(leagueSeason);
+                }
+            }
+
+            context.SaveChanges();
+
+            foreach (var ls in context.LeaguesSeasons)
+            {
+                int index;
+
+                if (ls.League.Name != "PremierLeague")
+                {
+                    index = 46;
+                }
+                else
+                {
+                    index = 38;
+                }
+
+                for (int i = 1; i <= index; i++)
+                {
+                    var round = new Round()
+                    {
+                        Number = i,
+                        LeagueSeason = ls
+                    };
+
+                    context.Rounds.Add(round);
+                }    
+            }
+
             context.SaveChanges();
 
             using (var parser = new StreamReader(@"..\..\Files\Teams-Towns-Stadiums-Capacity-OrderedByClub.txt"))
@@ -103,6 +164,120 @@ namespace FootballLeagues.Data.Migrations
                     context.Teams.Add(team);
                 }
             }
+
+            context.SaveChanges();
+
+            using (var reader = new StreamReader(@"..\..\Files\Games-2000-2013-England-All-Leagues.txt"))
+             {
+                 var round = 1;
+
+                 while (!reader.EndOfStream)
+                 {
+                     var line = reader.ReadLine();
+                     var info = line.Split(',');
+
+                     var period = info[0];
+                     var startYear = int.Parse(info[0].Split('-')[0]);
+                     var endYear = int.Parse(info[0].Split('-')[1]);
+                     var leagueName = info[1];
+                     var matchDate = DateTime.ParseExact(info[2], "dd/mm/yy",
+                         System.Globalization.CultureInfo.InvariantCulture);
+                     var homeTeamName = info[3];
+                     var awayTeamName = info[4];
+                     var homeGoalsFullTime = info[5];
+                     var awayGoalsFullTime = info[6];
+                     var homeGoalsHalfTime = info[7];
+                     var awayGoalsHalfTime = info[8];
+                     var attendance = int.Parse(info[9]);
+                     var refereeName = info[10];
+                     var homeShoots = info[11];
+                     var awayShoots = info[12];
+                     var homeShootsOnTarget = info[13];
+                     var awayShootsOnTarget = info[14];
+                     var homeCorners = info[17];
+                     var awayCorners = info[18];
+                     var homeFouls = info[19];
+                     var awayFouls = info[20];
+                     var homeYellowCards = info[23];
+                     var awayYellowCards = info[24];
+                     var homeRedCards = info[25];
+                     var awayRedCards = info[26];
+
+                     switch (leagueName)
+                     {
+                         case "PremierLeague":
+                             if (round % 10 == 0)
+                             {
+                                 round++;
+                                 if (round == 39)
+                                 {
+                                     round = 1;
+                                 }
+                             } break;
+                         case "ChampionShip":
+                             if (round % 12 == 0)
+                             {
+                                 round++;
+                                 if (round == 47)
+                                 {
+                                     round = 1;
+                                 }
+                             } break;
+                         case "LeagueOne":
+                             if (round % 12 == 0)
+                             {
+                                 round++;
+                                 if (round == 47)
+                                 {
+                                     round = 1;
+                                 }
+                             } break;
+                         case "LeagueTwo":
+                             if (round % 12 == 0)
+                             {
+                                 round++;
+                                 if (round == 47)
+                                 {
+                                     round = 1;
+                                 }
+                             } break;
+                         default:
+                             round = 10; break;
+                     }
+
+                     var leagueSeason = context.LeaguesSeasons
+                         .FirstOrDefault(
+                             ls => ls.League.Name == leagueName && ls.Season.StartYear == startYear);
+                     var currRound = context.Rounds.FirstOrDefault(r => r.LeagueSeason.LeagueId == leagueSeason.LeagueId);
+                     var homeTeam = context.Teams.FirstOrDefault(t => t.Name == homeTeamName);
+                     var awayTeam = context.Teams.FirstOrDefault(t => t.Name == awayTeamName);
+
+                     var game = new Game()
+                     {
+                         Round = currRound,
+                         HomeTeam = homeTeam,
+                         AwayTeam = awayTeam,
+                         HomeGoals = int.Parse(homeGoalsFullTime),
+                         AwayGoals = int.Parse(awayGoalsFullTime),
+                         HomeCorners = int.Parse(homeCorners),
+                         AwayCorners = int.Parse(awayCorners),
+                         HomeFouls = int.Parse(homeFouls),
+                         AwayFouls = int.Parse(awayFouls),
+                         HomeShots = int.Parse(homeShoots),
+                         AwayShots = int.Parse(awayShoots),
+                         HomeShotsOnTarget = int.Parse(homeShootsOnTarget),
+                         AwayShotsOnTarget = int.Parse(awayShootsOnTarget),
+                         HomeYellowCards = int.Parse(homeYellowCards),
+                         AwayYellowCards = int.Parse(awayYellowCards),
+                         HomeRedCards = int.Parse(homeRedCards),
+                         AwayRedCards = int.Parse(awayRedCards),
+                         Attendance = attendance,
+                         StartDate = matchDate
+                     };
+
+                     context.Games.Add(game);
+                 }
+             }
         }
     }
 }

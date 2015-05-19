@@ -4,7 +4,10 @@
     {
         Goal,
         Assists,
-        Penalty,
+        PenaltyScored,
+        PenaltyMissed,
+        PenaltySaved,
+        Starts,
         SubstituteIn,
         SubstituteOut,
         YellowCard,
