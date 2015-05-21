@@ -4,6 +4,7 @@ namespace FootballLeagues.Data.Migrations
     using System.Collections.Generic;
     using System.Data.Entity.Core.Metadata.Edm;
     using System.Data.Entity.Migrations;
+    using System.Globalization;
     using System.IO;
     using System.Linq;
     using Microsoft.VisualBasic.FileIO;
@@ -167,7 +168,7 @@ namespace FootballLeagues.Data.Migrations
 
             context.SaveChanges();
 
-            using (var reader = new StreamReader(@"..\..\Files\Games-2000-2013-England-All-Leagues.txt"))
+            using (var reader = new StreamReader(@"..\..\Files\Test-Games.txt"))
              {
                  var round = 1;
 
@@ -180,15 +181,15 @@ namespace FootballLeagues.Data.Migrations
                      var startYear = int.Parse(info[0].Split('-')[0]);
                      var endYear = int.Parse(info[0].Split('-')[1]);
                      var leagueName = info[1];
-                     var matchDate = DateTime.ParseExact(info[2], "dd/mm/yy",
-                         System.Globalization.CultureInfo.InvariantCulture);
+                     var defaultDate = new DateTime(1999, 01, 01);
+                     var matchDate = DateTime.TryParseExact(info[2], "dd/mm/yy",System.Globalization.CultureInfo.InvariantCulture, DateTimeStyles.AdjustToUniversal, out defaultDate);
                      var homeTeamName = info[3];
                      var awayTeamName = info[4];
                      var homeGoalsFullTime = info[5];
                      var awayGoalsFullTime = info[6];
                      var homeGoalsHalfTime = info[7];
                      var awayGoalsHalfTime = info[8];
-                     var attendance = int.Parse(info[9]);
+                     var attendance = info[9];
                      var refereeName = info[10];
                      var homeShoots = info[11];
                      var awayShoots = info[12];
@@ -251,28 +252,29 @@ namespace FootballLeagues.Data.Migrations
                      var currRound = context.Rounds.FirstOrDefault(r => r.LeagueSeason.LeagueId == leagueSeason.LeagueId);
                      var homeTeam = context.Teams.FirstOrDefault(t => t.Name == homeTeamName);
                      var awayTeam = context.Teams.FirstOrDefault(t => t.Name == awayTeamName);
+                     int hgft, agft, hc, ac, hf, af, hs, aws, hst, awst, hyc, ayc, hrc, arc, att;
 
                      var game = new Game()
                      {
                          Round = currRound,
                          HomeTeam = homeTeam,
                          AwayTeam = awayTeam,
-                         HomeGoals = int.Parse(homeGoalsFullTime),
-                         AwayGoals = int.Parse(awayGoalsFullTime),
-                         HomeCorners = int.Parse(homeCorners),
-                         AwayCorners = int.Parse(awayCorners),
-                         HomeFouls = int.Parse(homeFouls),
-                         AwayFouls = int.Parse(awayFouls),
-                         HomeShots = int.Parse(homeShoots),
-                         AwayShots = int.Parse(awayShoots),
-                         HomeShotsOnTarget = int.Parse(homeShootsOnTarget),
-                         AwayShotsOnTarget = int.Parse(awayShootsOnTarget),
-                         HomeYellowCards = int.Parse(homeYellowCards),
-                         AwayYellowCards = int.Parse(awayYellowCards),
-                         HomeRedCards = int.Parse(homeRedCards),
-                         AwayRedCards = int.Parse(awayRedCards),
-                         Attendance = attendance,
-                         StartDate = matchDate
+                         HomeGoals = int.TryParse(homeGoalsFullTime, out hgft) ? int.Parse(homeGoalsFullTime) : 0,
+                         AwayGoals = int.TryParse(awayGoalsFullTime, out agft) ? int.Parse(awayGoalsFullTime) : 0,
+                         HomeCorners = int.TryParse(homeCorners, out hc) ? int.Parse(homeCorners) : 0,
+                         AwayCorners = int.TryParse(awayCorners, out ac) ? int.Parse(awayCorners) : 0,
+                         HomeFouls = int.TryParse(homeFouls, out hf) ? int.Parse(homeFouls) : 0,
+                         AwayFouls = int.TryParse(awayFouls, out af) ? int.Parse(awayFouls) : 0,
+                         HomeShots = int.TryParse(homeShoots, out hs) ? int.Parse(homeShoots) : 0,
+                         AwayShots = int.TryParse(awayShoots, out aws) ? int.Parse(awayShoots) : 0,
+                         HomeShotsOnTarget = int.TryParse(homeShootsOnTarget, out hst) ? int.Parse(homeShootsOnTarget) : 0,
+                         AwayShotsOnTarget = int.TryParse(awayShootsOnTarget, out awst) ? int.Parse(awayShootsOnTarget) : 0,
+                         HomeYellowCards = int.TryParse(homeYellowCards, out hyc) ? int.Parse(homeYellowCards) : 0,
+                         AwayYellowCards = int.TryParse(awayYellowCards, out ayc) ? int.Parse(awayYellowCards) : 0,
+                         HomeRedCards = int.TryParse(homeRedCards, out hrc) ? int.Parse(homeRedCards) : 0,
+                         AwayRedCards = int.TryParse(awayRedCards, out arc) ? int.Parse(awayRedCards) : 0,
+                         Attendance = int.TryParse(attendance, out att) ? int.Parse(attendance) : 0,
+                         StartDate = defaultDate
                      };
 
                      context.Games.Add(game);
