@@ -2,12 +2,11 @@ namespace FootballLeagues.Data.Migrations
 {
     using System;
     using System.Collections.Generic;
-    using System.Data.Entity.Core.Metadata.Edm;
     using System.Data.Entity.Migrations;
     using System.Globalization;
     using System.IO;
     using System.Linq;
-    using Microsoft.VisualBasic.FileIO;
+
     using Models;
 
     internal sealed class Configuration : DbMigrationsConfiguration<FootballDbContext>
@@ -20,7 +19,7 @@ namespace FootballLeagues.Data.Migrations
 
         protected override void Seed(FootballDbContext context)
         {
-            using (var reader = new StreamReader(@"..\..\Files\countries.txt"))
+            using (var reader = new StreamReader(@"~/Files/countries.txt"))
             {
                 while (!reader.EndOfStream)
                 {
@@ -35,7 +34,7 @@ namespace FootballLeagues.Data.Migrations
                 }
             }
 
-            using (var reader = new StreamReader(@"..\..\Files\Leagues.txt"))
+            using (var reader = new StreamReader(@"~/Files/Leagues.txt"))
             {
                 while (!reader.EndOfStream)
                 {
@@ -110,7 +109,7 @@ namespace FootballLeagues.Data.Migrations
 
             context.SaveChanges();
 
-            using (var parser = new StreamReader(@"..\..\Files\Teams-Towns-Stadiums-Capacity-OrderedByClub.txt"))
+            using (var parser = new StreamReader(@"~/Files/Teams-Towns-Stadiums-Capacity-OrderedByClub.txt"))
             {
                 while (!parser.EndOfStream)
                 {
@@ -121,11 +120,11 @@ namespace FootballLeagues.Data.Migrations
                     var cityName = info[2];
                     var stadiumCapacity = int.Parse(info[3]);
                     var teamName = info[4];
-                    var yearEstablished = DateTime.ParseExact(info[5], "yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                    var yearEstablished = DateTime.ParseExact(info[5], "yyyy", CultureInfo.InvariantCulture);
                     var competitionName = info[6];
                     var managerName = info[7];
                     var countryName = info[8];
-                    var managerBirthDate = DateTime.ParseExact(info[9], "d-mm-yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                    var managerBirthDate = DateTime.ParseExact(info[9], "d-mm-yyyy", CultureInfo.InvariantCulture);
                     // var manageAppointDate = DateTime.ParseExact(info[10], "d-mm-yyyy",System.Globalization.CultureInfo.InvariantCulture);
 
                     var country = context.Countries
@@ -168,7 +167,7 @@ namespace FootballLeagues.Data.Migrations
 
             context.SaveChanges();
 
-            using (var reader = new StreamReader(@"..\..\Files\Test-Games.txt"))
+            using (var reader = new StreamReader(@"~/Files/Test-Games.txt"))
              {
                  var round = 1;
 
@@ -182,7 +181,7 @@ namespace FootballLeagues.Data.Migrations
                      var endYear = int.Parse(info[0].Split('-')[1]);
                      var leagueName = info[1];
                      var defaultDate = new DateTime(1999, 01, 01);
-                     var matchDate = DateTime.TryParseExact(info[2], "dd/mm/yy",System.Globalization.CultureInfo.InvariantCulture, DateTimeStyles.AdjustToUniversal, out defaultDate);
+                     var matchDate = DateTime.TryParseExact(info[2], "dd/mm/yy",CultureInfo.InvariantCulture, DateTimeStyles.AdjustToUniversal, out defaultDate);
                      var homeTeamName = info[3];
                      var awayTeamName = info[4];
                      var homeGoalsFullTime = info[5];
