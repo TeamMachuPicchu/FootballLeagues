@@ -21,5 +21,10 @@
             var id = data.LeaguesSeasons.All().FirstOrDefault(ls => ls.LeagueId == leagueId && ls.SeasonId == seasonId).Id;
             return id;
         }
+
+        public static Data.Models.LeaguesSeasons GetLeaguesSeasons(int leagueId, int seasonId)
+        {
+            return data.LeaguesSeasons.All().FirstOrDefault(ls => ls.LeagueId == leagueId && ls.SeasonId == seasonId);
+        }
     }
 }

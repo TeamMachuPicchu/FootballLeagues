@@ -7,11 +7,10 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
-    <!--TODO Fix Content of description-->
-    <meta name="description" content="The description of my page" />
+    <meta name="description" content="Latest football news and complete stats!" />
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -24,19 +23,21 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("News", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Leagues", "Index", "Leagues")</li>
+                    <li>@Html.ActionLink("Teams", "Contact", "Home")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
     <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
+            @RenderBody()
+
+        <hr/>
+    <footer>
+        <p>&copy; @DateTime.Now.Year - Team Machu Picchu</p>
+    </footer>
     </div>
 
     @Scripts.Render("~/bundles/jquery")

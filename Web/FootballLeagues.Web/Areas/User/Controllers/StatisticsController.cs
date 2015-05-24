@@ -1,12 +1,8 @@
-﻿using FootballLeagues.Web.Utils;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-
-namespace FootballLeagues.Web.Areas.User.Controllers
+﻿namespace FootballLeagues.Web.Areas.User.Controllers
 {
+    using System.Web.Mvc;
+    using Utils;
+
     public class StatisticsController : Controller
     {
         //

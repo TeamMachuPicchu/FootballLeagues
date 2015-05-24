@@ -2,8 +2,6 @@
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data;
     using Contracts;
 
     public class Country : BaseModel
@@ -18,6 +16,8 @@
         [Required]
         [MaxLength(100)]
         public string Name { get; set; }
+
+        public string Flag { get; set; }
 
         public virtual ICollection<Town> Towns { get; set; }
     }

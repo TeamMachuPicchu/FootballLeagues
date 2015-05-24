@@ -6,7 +6,6 @@ namespace FootballLeagues.Data.Migrations
     using System.Globalization;
     using System.IO;
     using System.Linq;
-
     using Models;
 
     internal sealed class Configuration : DbMigrationsConfiguration<FootballDbContext>
@@ -19,7 +18,7 @@ namespace FootballLeagues.Data.Migrations
 
         protected override void Seed(FootballDbContext context)
         {
-            using (var reader = new StreamReader(@"~/Files/countries.txt"))
+            /*using (var reader = new StreamReader(@"..\..\Files\countries.txt"))
             {
                 while (!reader.EndOfStream)
                 {
@@ -34,18 +33,26 @@ namespace FootballLeagues.Data.Migrations
                 }
             }
 
-            using (var reader = new StreamReader(@"~/Files/Leagues.txt"))
+            context.SaveChanges();
+
+            using (var reader = new StreamReader(@"..\..\Files\Leagues.txt"))
             {
+                var country = context.Countries.FirstOrDefault(c => c.Name == "ENGLAND");
+
                 while (!reader.EndOfStream)
                 {
-                    var line = reader.ReadLine();
+                    var line = reader.ReadLine().Split(',');
                     context.Leagues.Add(new League()
                     {
-                        Name = line
+                        Name = line[0],
+                        Logo = line[1],
+                        Country = country
+                        
                     });
                 }
             }
 
+            
             for (int startYear = 2000; startYear < 2015; startYear++)
             {
                 var season = new Season()
@@ -109,11 +116,10 @@ namespace FootballLeagues.Data.Migrations
 
             context.SaveChanges();
 
-            using (var parser = new StreamReader(@"~/Files/Teams-Towns-Stadiums-Capacity-OrderedByClub.txt"))
+            using (var parser = new StreamReader(@"..\..\Files\Teams-Towns-Stadiums-Capacity-OrderedByClub.txt"))
             {
                 while (!parser.EndOfStream)
                 {
-                    //Processing row
                     var line = parser.ReadLine();
                     var info = line.Split(',');
                     var stadiumName = info[1];
@@ -167,9 +173,10 @@ namespace FootballLeagues.Data.Migrations
 
             context.SaveChanges();
 
-            using (var reader = new StreamReader(@"~/Files/Test-Games.txt"))
+            using (var reader = new StreamReader(@"..\..\Files\Test-Games.txt"))
              {
                  var round = 1;
+                 var roundGame = 0;
 
                  while (!reader.EndOfStream)
                  {
@@ -203,21 +210,27 @@ namespace FootballLeagues.Data.Migrations
                      var homeRedCards = info[25];
                      var awayRedCards = info[26];
 
+                     roundGame++;
+             
                      switch (leagueName)
                      {
                          case "PremierLeague":
-                             if (round % 10 == 0)
+                             if (roundGame % 10 == 0)
                              {
                                  round++;
+                                 roundGame = 0;
+             
                                  if (round == 39)
                                  {
                                      round = 1;
                                  }
                              } break;
                          case "ChampionShip":
-                             if (round % 12 == 0)
+                             if (roundGame % 12 == 0)
                              {
                                  round++;
+                                 roundGame = 0;
+             
                                  if (round == 47)
                                  {
                                      round = 1;
@@ -227,6 +240,8 @@ namespace FootballLeagues.Data.Migrations
                              if (round % 12 == 0)
                              {
                                  round++;
+                                 roundGame = 0; 
+             
                                  if (round == 47)
                                  {
                                      round = 1;
@@ -236,6 +251,8 @@ namespace FootballLeagues.Data.Migrations
                              if (round % 12 == 0)
                              {
                                  round++;
+                                 roundGame = 0;
+              
                                  if (round == 47)
                                  {
                                      round = 1;
@@ -278,7 +295,7 @@ namespace FootballLeagues.Data.Migrations
 
                      context.Games.Add(game);
                  }
-             }
+             }*/
         }
     }
 }

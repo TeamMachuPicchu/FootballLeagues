@@ -18,6 +18,8 @@
 
         public int UserId { get; set; }
 
+        public virtual ApplicationUser User { get; set; }
+
         public bool IsActive { get; set; }
     }
 }

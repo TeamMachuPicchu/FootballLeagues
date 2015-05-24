@@ -1,5 +1,6 @@
 ﻿namespace FootballLeagues.Web
 {
+    using System.Reflection;
     using System.Web;
     using System.Web.Mvc;
     using System.Web.Optimization;
@@ -19,7 +20,7 @@
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            var automapperConfig = new AutoMapperConfig();
+            var automapperConfig = new AutoMapperConfig(Assembly.GetExecutingAssembly());
             automapperConfig.Execute();
         }
     }

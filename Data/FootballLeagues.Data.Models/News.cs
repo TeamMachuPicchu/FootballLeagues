@@ -1,6 +1,5 @@
 ﻿namespace FootballLeagues.Data.Models
 {
-    using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using Contracts;
@@ -17,13 +16,15 @@
         [MaxLength(10000)]
         public string Content { get; set; }
 
-        public DateTime Published { get; set; }
+        public string Image { get; set; }
 
         public int UserId { get; set; }
 
+        public virtual ApplicationUser User { get; set; }
+
         public virtual ICollection<Tag> Tags { get; set; }
 
-        // What is this about? 
+        // TODO: Check if we need this or it is used like IsDeleted ? 
         public bool IsActive { get; set; }
     }
 }

@@ -7,6 +7,8 @@ using System.Web;
 
 namespace FootballLeagues.Web.Utils
 {
+    using Data.Models;
+
     public static class Seasons
     {
         private static readonly FootballData data = new FootballData();
@@ -25,6 +27,11 @@ namespace FootballLeagues.Web.Utils
             var id = data.Seasons.All().FirstOrDefault(p => p.StartYear == period.StartYear && p.EndYear == period.EndYear).Id;
 
             return id;
+        }
+
+        public static Season GetSeasonByEndYear(int endYear)
+        {
+            return data.Seasons.All().FirstOrDefault(s => s.EndYear == endYear);
         }
     }
 }

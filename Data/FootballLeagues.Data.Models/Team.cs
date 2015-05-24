@@ -33,7 +33,7 @@
 
         public Stadium Stadium { get; set; }
 
-        public int OwnerId { get; set; }
+        // public int OwnerId { get; set; }
 
         // public virtual Owner Owner { get; set; }
 
@@ -49,8 +49,8 @@
 
         public virtual ICollection<LeaguesSeasons> LeaguesSeasons { get; set; }
 
-        //public virtual ICollection<Game> HomeGames { get; set; }
+        public virtual ICollection<Game> HomeGames { get; set; }
 
-        //public virtual ICollection<Game> AwayGames { get; set; }
+        public virtual ICollection<Game> AwayGames { get; set; }
     }
 }

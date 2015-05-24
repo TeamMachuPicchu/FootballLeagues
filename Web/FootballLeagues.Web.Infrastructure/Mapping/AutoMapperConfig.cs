@@ -9,10 +9,17 @@
 
     public class AutoMapperConfig
     {
+        private Assembly assembly;
+
+        public AutoMapperConfig(Assembly assembly)
+        {
+            this.assembly = assembly;
+        }
+
         public void Execute()
         {
             // GetExecutingAssembly or GetCallingAssembly
-            var types = Assembly.GetExecutingAssembly().GetExportedTypes();
+            var types = this.assembly.GetExportedTypes();
 
             LoadStandardMappings(types);
 
@@ -30,7 +37,7 @@
                         {
                             Source = i.GetGenericArguments()[0],
                             Destination = t
-                        }).ToArray();
+                        });
 
             foreach (var map in maps)
             {
@@ -45,7 +52,7 @@
                         where typeof(IHaveCustomMappings).IsAssignableFrom(t) &&
                               !t.IsAbstract &&
                               !t.IsInterface
-                        select (IHaveCustomMappings)Activator.CreateInstance(t)).ToArray();
+                        select (IHaveCustomMappings)Activator.CreateInstance(t));
 
             foreach (var map in maps)
             {

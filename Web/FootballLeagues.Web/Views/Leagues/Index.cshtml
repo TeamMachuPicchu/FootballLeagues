@@ -1,0 +1,10 @@
+﻿@model IEnumerable<FootballLeagues.Web.Models.League.LeagueViewModel>
+
+@foreach (var item in Model)
+{
+    var imgSrc = string.Format("data:image/jpg;base64,{0}", item.Logo);
+    
+    <a href="@Url.Action("Details", "Leagues", new {item.Id})" class="btn btn-default">
+        <img src="@imgSrc" alt="Logo" width="200" />
+    </a>
+}

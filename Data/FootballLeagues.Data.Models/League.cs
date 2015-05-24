@@ -20,6 +20,11 @@
 
         public string Logo { get; set; }
 
+        public int CountryId { get; set; }
+
+        public virtual Country Country { get; set; }
+
+
         public virtual ICollection<LeaguesSeasons> LeagueSeasons { get; set; }
     }
 }
