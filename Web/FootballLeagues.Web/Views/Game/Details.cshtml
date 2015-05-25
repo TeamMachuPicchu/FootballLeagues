@@ -1,0 +1,24 @@
+﻿@model FootballLeagues.Web.Models.GameViewModel
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-5 text-right">@Model.HomeTeam.Name</div>
+        <div class="col-sm-1"></div>
+        <div class="col-sm-1"></div>
+        <div class="col-sm-5">@Model.AwayTeam.Name</div>
+    </div>
+    <div class="row">
+        @*@Html.DisplayNameFor(model => model.HomeCorners)*@
+        <div class="col-sm-5 text-right">Goals</div>
+        <div class="col-sm-1">@Model.HomeGoals</div>
+        <div class="col-sm-1">@Model.AwayGoals</div>
+        <div class="col-sm-5 text-right"></div>
+    </div>
+    <div class="row">
+        @*@Html.DisplayNameFor(model => model.HomeCorners)*@
+        <div class="col-sm-5 text-right">Corners</div>
+        <div class="col-sm-1">@Model.HomeCorners</div>
+        <div class="col-sm-1">@Model.AwayCorners</div>
+        <div class="col-sm-5 text-right"></div>
+    </div>
+</div>

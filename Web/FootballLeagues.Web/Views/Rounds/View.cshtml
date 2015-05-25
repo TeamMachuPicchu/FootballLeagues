@@ -1,0 +1,19 @@
+﻿@model IEnumerable<FootballLeagues.Web.Models.GameViewModel>
+
+@foreach (var game in Model)
+{
+    <div class="row">
+        @Html.ActionLink(String.Format("{0} {1}-{2} {3}", game.HomeTeam.Name, game.HomeGoals, game.AwayGoals, game.AwayTeam.Name),
+             "Details",
+             "Game",
+              new { teams = string.Format("{0}-{1}", game.HomeTeam.Name, game.AwayTeam.Name), season = game.Season, round = game.Round.Number, gameId = game.Id },
+             null
+        )
+        @*
+            @Html.DisplayFor(model => game.HomeTeam)
+            @Html.DisplayFor(model => game.HomeGoals)
+            @Html.DisplayFor(model => game.AwayGoals)
+            @Html.DisplayFor(model => game.AwayTeam.Name)*@
+    </div>
+
+}

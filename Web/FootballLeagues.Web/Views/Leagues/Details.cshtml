@@ -1,7 +1,8 @@
 ﻿@model IEnumerable<FootballLeagues.Web.Models.Rounds.RoundsViewModel>
 
 @foreach (var round in Model)
-{
-    <a href="@Url.Action("View", "Rounds", new {round.Id})">Round - @round.Number</a>
+{                                                                                        
+    @Html.ActionLink(String.Format("Round - {0}", round.Number), "View", "Rounds", new { roundId = round.Id, number = round.Number, season = round.Season, league = round.LeagueName }, null)
+    // <a href="@Url.Action("View", "Rounds", new {round.Number, round.Id})">Round - @round.Number</a>
     <br/>
 }

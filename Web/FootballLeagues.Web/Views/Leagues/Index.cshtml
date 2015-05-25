@@ -4,7 +4,7 @@
 {
     var imgSrc = string.Format("data:image/jpg;base64,{0}", item.Logo);
     
-    <a href="@Url.Action("Details", "Leagues", new {item.Id})" class="btn btn-default">
+    <a href="@Url.Action("Details", "Leagues", new {id = item.Id})" class="btn btn-warning">
         <img src="@imgSrc" alt="Logo" width="200" />
     </a>
 }

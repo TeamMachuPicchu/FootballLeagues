@@ -13,7 +13,7 @@ namespace FootballLeagues.Web.Areas.User
         }
 
         public override void RegisterArea(AreaRegistrationContext context) 
-        {
+        {/*
             context.MapRoute(
                 "User_Player_Statistics_Round",
                 "user/{controller}/player/{playerName}/league/{leagueName}/season/{season}/round/{round}",
@@ -30,7 +30,7 @@ namespace FootballLeagues.Web.Areas.User
                 "User_default",
                 "user/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional }
-            );
+            );*/
         }
     }
 }

@@ -9,7 +9,7 @@
 
     public class GameController : Controller
     {
-        private FootballData data = new FootballData();
+        private readonly FootballData data = new FootballData();
 
         // GET: Game
         public ActionResult Index(int id)
@@ -19,6 +19,17 @@
                 .Project()
                 .To<GameViewModel>()
                 .FirstOrDefault(g => g.Id == id);
+
+            return View(game);
+        }
+
+        public ActionResult Details(string teams, string season, int round, int gameId)
+        {
+            var game = this.data.Games
+                .All()
+                .Project()
+                .To<GameViewModel>()
+                .FirstOrDefault(g => g.Id == gameId);
 
             return View(game);
         }

@@ -30,5 +30,7 @@
         public int AwayCorners { get; set; }
 
         public Round Round { get; set; }
+
+        public string Season { get; set; }
     }
 }

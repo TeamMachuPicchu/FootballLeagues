@@ -259,13 +259,13 @@ namespace FootballLeagues.Data.Migrations
                                  }
                              } break;
                          default:
-                             round = 10; break;
+                             round = 12; break;
                      }
 
                      var leagueSeason = context.LeaguesSeasons
                          .FirstOrDefault(
                              ls => ls.League.Name == leagueName && ls.Season.StartYear == startYear);
-                     var currRound = context.Rounds.FirstOrDefault(r => r.LeagueSeason.LeagueId == leagueSeason.LeagueId);
+                     var currRound = context.Rounds.FirstOrDefault(r => r.Number == round && r.LeaguesSeasonsId == leagueSeason.Id);
                      var homeTeam = context.Teams.FirstOrDefault(t => t.Name == homeTeamName);
                      var awayTeam = context.Teams.FirstOrDefault(t => t.Name == awayTeamName);
                      int hgft, agft, hc, ac, hf, af, hs, aws, hst, awst, hyc, ayc, hrc, arc, att;
@@ -274,7 +274,7 @@ namespace FootballLeagues.Data.Migrations
                      {
                          Round = currRound,
                          HomeTeam = homeTeam,
-                         AwayTeam = awayTeam,
+                         AwayTeam = awayTeam, 
                          HomeGoals = int.TryParse(homeGoalsFullTime, out hgft) ? int.Parse(homeGoalsFullTime) : 0,
                          AwayGoals = int.TryParse(awayGoalsFullTime, out agft) ? int.Parse(awayGoalsFullTime) : 0,
                          HomeCorners = int.TryParse(homeCorners, out hc) ? int.Parse(homeCorners) : 0,

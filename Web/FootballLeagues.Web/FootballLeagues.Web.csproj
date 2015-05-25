@@ -205,6 +205,7 @@
     <Compile Include="Controllers\GameController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LeaguesController.cs" />
+    <Compile Include="Controllers\RoundsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -301,6 +302,8 @@
     <Content Include="Views\Leagues\Index.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\LeagueViewModel.cshtml" />
     <Content Include="Views\Game\Index.cshtml" />
+    <Content Include="Views\Rounds\View.cshtml" />
+    <Content Include="Views\Game\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

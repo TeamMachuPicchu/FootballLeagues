@@ -10,5 +10,9 @@
         public int Number { get; set; }
 
         public LeaguesSeasons LeaguesSeasons { get; set; }
+
+        public string LeagueName { get; set; }
+
+        public string Season { get; set; }
     }
 }
