@@ -1,8 +1,15 @@
-﻿@model IEnumerable<FootballLeagues.Web.Models.Rounds.RoundsViewModel>
+﻿@model Tuple<List<FootballLeagues.Web.Models.Rounds.RoundsViewModel>, List<FootballLeagues.Web.Models.LeagueSeason.LeaguesSeasonsViewModel>>
 
-@foreach (var round in Model)
-{                                                                                        
-    @Html.ActionLink(String.Format("Round - {0}", round.Number), "View", "Rounds", new { roundId = round.Id, number = round.Number, season = round.Season, league = round.LeagueName }, null)
-    // <a href="@Url.Action("View", "Rounds", new {round.Number, round.Id})">Round - @round.Number</a>
-    <br/>
-}
+<div class="row">
+    <div class="col-lg-8">
+        @foreach (var round in Model.Item1)
+        {
+            @Html.ActionLink(String.Format("Round - {0}", round.Number), "View", "Rounds", new {roundId = round.Id, number = round.Number, season = round.Season, league = round.LeagueName}, null)
+            // <a href="@Url.Action("View", "Rounds", new {round.Number, round.Id})">Round - @round.Number</a>
+            <br/>
+        }                                                                                                             
+    </div>
+    <div class="col-lg-4">
+        @Html.DropDownListFor(m => m.Item2., new SelectList(Model.Item2, "LeagueId", "EndYear"), new {@class="center-block"})
+    </div>
+</div>

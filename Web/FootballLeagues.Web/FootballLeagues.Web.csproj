@@ -211,6 +211,7 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Game\GameViewModel.cs" />
+    <Compile Include="Models\LeagueSeason\LeaguesSeasonsViewModel.cs" />
     <Compile Include="Models\League\LeagueViewModel.cs" />
     <Compile Include="Models\News\NewsViewModel.cs" />
     <Compile Include="Models\PlayerStatistics.cs" />

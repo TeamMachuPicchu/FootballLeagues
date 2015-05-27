@@ -14,6 +14,7 @@
     using Data.Common.UnitOfWork;
     using Data.Models;
     using Models.League;
+    using Models.LeagueSeason;
     using Models.News;
     using Models.Rounds;
     using Models.Teams;
@@ -41,21 +42,22 @@
         public ActionResult Details(int id)
         {
             var league = data.Leagues.GetById(id);
+            var season = this.data.Seasons.All().OrderByDescending(s => s.EndYear).FirstOrDefault();
 
-            var season = Seasons.GetSeasonByEndYear(2012);
-
-            if (league == null)
+            if (league == null || season == null)
             {
                 return HttpNotFound();
             }
             // TODO Get the teams per leagueSeason
 
             var leagueSeason = LeaguesSeasons.GetLeaguesSeasons(id, season.Id);
-
             var roundsIds = Rounds.GetIdsByLeaguesSeasonsId(leagueSeason.Id);
-            var rounds = new HashSet<RoundsViewModel>();
-
-            // var leagueLast = this.data.Leagues.All().Project().To<LeagueViewModel>().LastOrDefault();
+            var rounds = new List<RoundsViewModel>();
+            var leaguesSeasons = this.data.LeaguesSeasons
+                .All()
+                .Where(ls => ls.LeagueId == league.Id)
+                .Select(ls => new LeaguesSeasonsViewModel{ LeagueId = ls.LeagueId, StartYear = ls.Season.StartYear, EndYear = ls.Season.EndYear})
+                .ToList();
 
             foreach (var rnd in roundsIds)
             {
@@ -66,7 +68,7 @@
             }
 
             // RedirectToAction("Index", "Rounds");
-            return View(rounds);
+            return View(Tuple.Create(rounds, leaguesSeasons));
         }
     }
 }
