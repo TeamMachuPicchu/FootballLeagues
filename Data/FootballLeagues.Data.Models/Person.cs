@@ -22,9 +22,9 @@
 
         public string Info { get; set; }
 
-        public DateTime Birthdate { get; set; }
+        // public DateTime Birthdate { get; set; }
 
-        public int Age()
+        /*public int Age()
         {
             DateTime today = DateTime.Today;
             DateTime bday = this.Birthdate;
@@ -35,6 +35,6 @@
             }
 
             return age;
-        }
+        }*/
     }
 }

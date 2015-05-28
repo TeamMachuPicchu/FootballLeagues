@@ -7,6 +7,7 @@ namespace FootballLeagues.Data.Migrations
     using System.IO;
     using System.Linq;
     using Models;
+    using Action = Models.Action;
 
     internal sealed class Configuration : DbMigrationsConfiguration<FootballDbContext>
     {
@@ -296,6 +297,112 @@ namespace FootballLeagues.Data.Migrations
                      context.Games.Add(game);
                  }
              }*/
+
+            using (var reader = new StreamReader(@"..\..\Files\Players.txt"))
+            {
+                while (!reader.EndOfStream)
+                {
+                    var line = reader.ReadLine();
+                    var info = line.Split(',');
+                    // DateTime matchDate;
+
+                    // DateTime.TryParseExact(info[0], "dd/mm/yy", CultureInfo.InvariantCulture, DateTimeStyles.AdjustToUniversal, out matchDate);
+                    var lastName = info[2];
+                    var firstName = info[3];
+                    var playerName = firstName + " " + lastName;
+                    var teamName = info[4];
+                    var opponent = info[6];
+                    var venue = info[8];
+                    var position = int.Parse(info[9]);
+                    var minutesPlayed = int.Parse(info[10]);
+                    var starts = int.Parse(info[11]);
+                    var subOn = int.Parse(info[12]);
+                    var subOff = int.Parse(info[13]);
+                    var goals = int.Parse(info[14]);
+                    var penaltyGoals = int.Parse(info[15]);
+                    var penaltySaved = int.Parse(info[16]);
+                    var penaltyMissed = int.Parse(info[17]);
+                    var successPasses = int.Parse(info[29]);
+                    var unSuccessPasses = int.Parse(info[30]);
+                    var assists = int.Parse(info[31]);
+                    var keyPasses = int.Parse(info[32]);
+                    var successDribbles = int.Parse(info[33]);
+                    var unSuccessDribbles = int.Parse(info[34]);
+                    var tacklesWon = int.Parse(info[36]);
+                    var tacklesLost = int.Parse(info[37]);
+                    var offsides = int.Parse(info[40]);
+                    var yellowCards = int.Parse(info[41]);
+                    var redCards = int.Parse(info[42]);
+                    var savesMade = int.Parse(info[43]);
+
+                    var team = context.Teams.FirstOrDefault(t => t.Name == teamName);
+                    Player player;
+
+                    if (!context.Players.Any(p => p.Name == playerName))
+                    {
+                        player = new Player()
+                        {
+                            Name = playerName,
+                            CurrentTeam = team,
+                            Position = (Position) position
+                        };
+
+                        context.Players.Add(player);
+
+                        context.SaveChanges();
+                    }
+                    else
+                    {
+                        player = context.Players.FirstOrDefault(p => p.Name == playerName);
+                    }
+
+                    string homeTeam, awayTeam;
+
+                    if (venue == "Home")
+                    {
+                        homeTeam = teamName;
+                        awayTeam = opponent;
+                    }
+
+                    else
+                    {
+                        homeTeam = opponent;
+                        awayTeam = teamName;
+                    }
+
+                    var game =
+                        context.Games.FirstOrDefault(g => g.HomeTeam.Name == homeTeam && g.AwayTeam.Name == awayTeam && g.Round.LeagueSeason.Season.EndYear == 2012);
+                    /*var actions = new Dictionary<Object, int>();*/
+                    var actions = Enum.GetValues(typeof (Action)).Cast<Action>().ToDictionary(t => t, t=>(int)t);
+
+                    
+                    if (actions.ContainsKey(Action.Assists))
+                    {
+                        actions[Action.Assists] += assists;
+                    }
+
+                    actions[Action.Assists] += assists;
+                    actions[Action.Goal] += goals;
+                    actions[Action.PenaltyMissed] += penaltyMissed;
+                    actions[Action.PenaltySaved] += penaltySaved;
+                    actions[Action.PenaltyScored] += penaltyGoals;
+                    actions[Action.RedCard] += redCards;
+                    actions[Action.Starts] += starts;
+                    actions[Action.SubstituteIn] += subOn;
+                    actions[Action.SubstituteOut] += subOff;
+                    actions[Action.YellowCard] += yellowCards;
+
+                    var gameStats = new GameStats()
+                    {
+                        Game = game,
+                        Player = player,
+                        Actions = actions
+                    };
+
+                    context.GamesStats.Add(gameStats);
+                    context.SaveChanges();
+                }
+            }
         }
     }
 }

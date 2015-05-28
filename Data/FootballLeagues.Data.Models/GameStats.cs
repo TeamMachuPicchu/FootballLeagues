@@ -1,5 +1,7 @@
-﻿namespace FootballLeagues.Data.Models
+﻿
+namespace FootballLeagues.Data.Models
 {
+    using System.Collections.Generic;
     using Contracts;
 
     public class GameStats : BaseModel
@@ -20,7 +22,7 @@
 
         public int Time { get; set; }
 
-        public Action Action { get; set; }
+        public IDictionary<Action, int> Actions { get; set; }
 
 
 

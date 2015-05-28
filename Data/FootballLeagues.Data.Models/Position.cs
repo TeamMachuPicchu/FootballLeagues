@@ -2,15 +2,9 @@
 {
     public enum Position
     {
-        Goalkeaper,
-        RightBack,
-        LeftBack,
-        CenterBack,
-        RightMidFielder,
-        LeftMidFielder,
-        CenterMidFielader,
-        RightWinger,
-        LeftWinger,
-        Striker 
+        Goalkeaper = 1,
+        Defender = 2,
+        MidFielder = 4,
+        Striker = 6 
     }
 }

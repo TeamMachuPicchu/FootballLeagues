@@ -30,14 +30,15 @@
         }
 
         //public int Goals { get; set; }
-        public static int GetTotalPlayerActionsByGameStatsId(int playerId, int gameStatsId, Action action)
+        /*public static int GetTotalPlayerActionsByGameStatsId(int playerId, int gameStatsId, Action action)
         {
-            int result = data.GamesStats.All().Where(gs => gs.Id == gameStatsId && gs.PlayerId == playerId).Count(gs => (int)gs.Action == (int)action);
+            int result = data.GamesStats.All().Where(gs => gs.Id == gameStatsId && gs.PlayerId == playerId).Count(gs => gs.Actions.Count == (int)action);
 
             return result;
-        }
+        }*/
 
-        public static int GetTotlaPlayerActionsByGameStatsIds(int playerId, List<int> gameStatsIds, Action action)
+        // Changed type in game stats. 
+        /*public static int GetTotlaPlayerActionsByGameStatsIds(int playerId, List<int> gameStatsIds, Action action)
         {
             int result = 0;
 
@@ -47,6 +48,6 @@
             }
 
             return result;
-        }
+        }*/
     }
 }

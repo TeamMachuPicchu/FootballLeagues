@@ -14,5 +14,10 @@
 
             return id;
         }
+
+        public static bool Exists(string playerName)
+        {
+            return data.Players.All().Any(p => p.Name == playerName);
+        }
     }
 }
