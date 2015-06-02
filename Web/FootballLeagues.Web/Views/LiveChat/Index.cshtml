@@ -1,0 +1,311 @@
+﻿@{
+    ViewBag.Title = "Live Chat";
+}
+
+<h1>@ViewBag.Title</h1>
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span6 well">
+            <span class="label">Select Room</span>
+            <button class="btn btn-success btn-small btn-right" id="delete_room">Delete Room</button>&nbsp;
+            <select id="selectRoom" class="btn-right">
+                <option value="All" selected="selected">All</option>
+            </select><br /><br />
+            <span class="label" style="float:left;margin-top: 4px;">Room: </span>
+            <span id="roomlabel"></span><br /><br />
+            <div class="mess-conn"><span class="label">Messages: </span><button class="btn btn-success btn-small btn-right" id="clear_msgs">Clear</button></div>
+            <div id="messages">
+            </div>
+            <br />
+            <span class="label">Send message: </span>
+            <button class="btn btn-success btn-small btn-right" id="send-message">Send</button>
+            <input type="text" id="message" placeholder="message" class="btn-right" />
+        </div>
+        <div class="span6 well">
+            <span class="label">Create or Add existing Room:  </span>
+            <button class="btn btn-success btn-small btn-right" id="create-room">Create</button>
+            <input type="text" id="room" placeholder="Room name" class="btn-right" /><br /><br />
+
+            <span class="label">Active Users: </span>
+            <ul id="activeUsers"></ul>
+            <div class="mess-conn">
+                <span class="label">Info Messages: </span>
+                <button class="btn btn-success btn-small btn-right" id="clear_info">Clear</button>
+            </div>
+            <div id="info">
+
+            </div>
+        </div>
+        @*<span>Active Users</span>
+            <ul id="activeUsers"></ul>
+
+            <div id="currentRooms">
+                <span class="label">Select Room</span>
+                <select id="selectRoom">
+                    <option value="All" selected="selected">All</option>
+                </select>
+                <button class="btn btn-success btn-small" id="delete_room">Delete Room</button>
+                <span class="label">Create Room</span>
+                <input type="text" id="room" placeholder="Room name" />
+                <button class="btn btn-success btn-small" id="create-room">Create</button>
+                <br />
+                <input type="text" id="message" placeholder="message" />
+                <button class="btn btn-success btn-small" id="send-message">Send</button>
+            </div>
+            <span>Room: </span>
+            <div id="roomlabel"></div>
+            <span>Messages</span>
+            <div id="messages">
+
+            </div>
+            <button class="btn btn-success btn-small" id="clear_msgs">Clear</button><br />
+            <span>Info Messages</span>
+            <div id="info">
+
+            </div>
+            <button class="btn btn-success btn-small" id="clear_info">Clear</button>*@
+    </div>
+</div>
+
+@section scripts {
+
+    <script src="~/Scripts/jquery.signalR-2.2.0.js"></script>
+    <script src="~/signalr/hubs"></script>
+
+    <script>
+
+        var curRoom = getCurRoom();
+        if (curRoom) {
+            renderRoomLabel();
+        }
+        else {
+            curRoom = 'All';
+            saveCurRoom(curRoom);
+        }
+
+        var msgs = getMsg(getCurRoom());
+        if (msgs) {
+            renderMsg();
+        }
+        else {
+            msgs = [];
+            saveMsg(getCurRoom(), msgs);
+        }
+
+        var infoMsgs = getInfoMsg(getCurRoom());
+        if (infoMsgs) {
+            renderInfoMsg();
+        }
+        else {
+            infoMsgs = [];
+            saveInfoMsg(getCurRoom(), infoMsgs);
+        }
+
+        var rooms = getRooms();
+        if (rooms) {
+            renderRooms(rooms);
+        }
+        else {
+            rooms = [];
+            saveRooms(rooms);
+        }
+
+        $(document).ready(function () {
+
+            $.connection.hub.start();
+
+            var chat = $.connection.liveChat;
+
+            $('#delete_room').click(function () {
+                if (getCurRoom() !== 'All') {
+                    chat.server.leaveRoom(getCurRoom());
+                    renderInfoMsg();
+                    renderMsg();
+                    renderRooms();
+                }
+            });
+
+            $('#clear_info').click(function () {
+                localStorage.removeItem('info_' + getCurRoom());
+                renderInfoMsg();
+            });
+
+            $('#clear_msgs').click(function () {
+                localStorage.removeItem('msg_' + getCurRoom());
+                renderMsg();
+            });
+
+            $('#selectRoom').change(function () {
+                var newRoom = $('#selectRoom').val();
+                var curRoom = getCurRoom();
+                chat.server.changeRoom(curRoom, newRoom);
+            });
+
+            $('#send-message').click(function () {
+
+                var msg = $('#message').val();
+                var room = $('#selectRoom').val();
+                chat.server.sendMessageToRoom(msg, room);
+            });
+
+            $("#create-room").click(function () {
+                var room = $('#room').val();
+
+                chat.server.joinRoom(room)
+            });
+
+            window.setInterval(function () {
+                chat.server.getActiveUsers();
+            }, 1000);
+
+            chat.client.addMessage = addMessage;
+            chat.client.addInfoMessage = addInfoMessage;
+            chat.client.joinRoom = joinRoom;
+            chat.client.changeRoom = changeRoom;
+            chat.client.leaveRoom = leaveRoom;
+            chat.client.renderActiveUsers = renderActiveUsers;
+
+            scrollDown("#messages");
+            scrollDown("#info");
+        });
+
+        function scrollDown(selector) {
+            $(selector).animate({ scrollTop: $(document).height() }, "slow");
+            return false;
+        }
+
+        function addMessage(message, room) {
+            var msgs = getMsg(room);
+            if (!msgs) {
+                msgs = [];
+            }
+            msgs.push(message);
+            saveMsg(room, msgs);
+            renderMsg();
+        }
+
+        function addInfoMessage(message, room) {
+            var infoMsgs = getInfoMsg(room);
+            if (!infoMsgs) {
+                infoMsgs = [];
+            }
+            infoMsgs.push(message);
+            saveInfoMsg(room, infoMsgs);
+            renderInfoMsg();
+        }
+
+        function joinRoom(room) {
+            var rooms = getRooms();
+            if (rooms.indexOf(room) < 0) {
+                rooms.push(room);
+                renderRooms(rooms);
+                saveRooms(rooms);
+            }
+        }
+
+        function changeRoom(newRoom) {
+            saveCurRoom(newRoom);
+            renderRoomLabel();
+            renderMsg();
+            renderInfoMsg();
+        }
+
+        function leaveRoom(room) {
+            localStorage.removeItem('info_' + getCurRoom());
+            localStorage.removeItem('msg_' + getCurRoom());
+            var rooms = getRooms();
+            var index = rooms.indexOf(room);
+            rooms.splice(index, 1);
+            changeRoom('All');
+            renderRooms(rooms);
+            saveRooms(rooms);
+        }
+
+        function saveRooms(rooms) {
+            localStorage.setItem('rooms', JSON.stringify(rooms));
+        }
+
+        function getRooms() {
+            return JSON.parse(localStorage.getItem('rooms'));
+        }
+
+        function saveCurRoom(room) {
+            localStorage.setItem('curRoom', room);
+        }
+
+        function getCurRoom() {
+            return localStorage.getItem('curRoom');
+        }
+
+        function renderRoomLabel() {
+            $('#roomlabel').text(localStorage.getItem('curRoom'));
+        }
+
+        function renderRooms(rooms) {
+
+            var selectRoom = document.getElementById("selectRoom");
+            selectRoom.innerHTML = '<option value="All" selected="selected">All</option>';
+            for (var i = 0; i < rooms.length; i++) {
+                var opt = rooms[i];
+                var el = document.createElement("option");
+                if (!$('#selectRoom').children('#' + opt.replace(/\W+/, '_'))) {
+                    continue;
+                }
+                el.id = opt.replace(/\W+/, '_');
+                el.textContent = opt;
+                el.value = opt;
+                selectRoom.appendChild(el);
+            }
+        }
+
+        function saveMsg(room, msgs) {
+            localStorage.setItem('msg_' + room, JSON.stringify(msgs));
+        }
+
+        function saveInfoMsg(room, msgs) {
+            localStorage.setItem('info_' + room, JSON.stringify(msgs));
+        }
+
+        function getMsg(room) {
+            var msgs = JSON.parse(localStorage.getItem('msg_' + room));
+            if (!msgs) {
+                msgs = [];
+            }
+            return msgs;
+        }
+
+        function getInfoMsg(room) {
+            var msgs = JSON.parse(localStorage.getItem('info_' + room));
+            if (!msgs) {
+                msgs = [];
+            }
+            return msgs;
+        }
+
+        function renderMsg() {
+            $('#messages').text("");
+            var msgs = getMsg(getCurRoom());
+            for (var i = 0; i < msgs.length; i++) {
+                $('<div/>', { text: msgs[i] }).appendTo('#messages');
+            }
+            scrollDown("#messages");
+            scrollDown("#info");
+        }
+
+        function renderInfoMsg() {
+            $('#info').text("");
+            var msgs = getInfoMsg(getCurRoom());
+            for (var i = 0; i < msgs.length; i++) {
+                $('#info').append('<div>' + msgs[i] + '</div>');
+            }
+        }
+
+        function renderActiveUsers(users) {
+            $('#activeUsers').text("");
+            for (var i = 0; i < users.length; i++) {
+                $('#activeUsers').append('<li>' + $('<div/>').text(users[i]).html() + '</li>');
+            }
+        }
+
+    </script>
+}
