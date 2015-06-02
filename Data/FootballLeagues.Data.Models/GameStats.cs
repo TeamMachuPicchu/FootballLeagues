@@ -22,7 +22,7 @@ namespace FootballLeagues.Data.Models
 
         public int Time { get; set; }
 
-        public IDictionary<Action, int> Actions { get; set; }
+        public Action Action { get; set; }
 
 
 

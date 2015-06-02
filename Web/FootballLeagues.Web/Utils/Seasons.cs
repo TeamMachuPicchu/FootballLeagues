@@ -1,13 +1,9 @@
-﻿using FootballLeagues.Data.Common.UnitOfWork;
-using FootballLeagues.Web.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace FootballLeagues.Web.Utils
+﻿namespace FootballLeagues.Web.Utils
 {
+    using System.Linq;
+    using Data.Common.UnitOfWork;
     using Data.Models;
+    using Models;
 
     public static class Seasons
     {
@@ -25,6 +21,16 @@ namespace FootballLeagues.Web.Utils
         public static int GetIdByPeriod(SeasonPeriod period)
         {
             var id = data.Seasons.All().FirstOrDefault(p => p.StartYear == period.StartYear && p.EndYear == period.EndYear).Id;
+
+            return id;
+        }
+
+        public static int GetIdByPeriod(string period)
+        {
+            var years = period.Split('-');
+            int startYear = int.Parse(years[0]);
+            int endYear = int.Parse(years[1]);
+            var id = data.Seasons.All().FirstOrDefault(p => p.StartYear == startYear && p.EndYear == endYear).Id;
 
             return id;
         }

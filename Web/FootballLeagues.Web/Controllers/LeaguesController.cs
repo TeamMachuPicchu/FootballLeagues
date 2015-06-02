@@ -21,14 +21,18 @@
     using Utils;
     using LeaguesSeasons = Utils.LeaguesSeasons;
 
-    public class LeaguesController : Controller
+    public class LeaguesController : BaseController
     {
-        private FootballData data = new FootballData();
+        public LeaguesController(IFootballData data)
+            : base(data)
+        {
+            
+        }
 
         [OutputCache(Duration = 30 * 60)]
         public ActionResult Index()
         {
-            var leagues = this.data
+            var leagues = this.Data
                 .Leagues
                 .All()
                 .Project()
@@ -39,10 +43,20 @@
         }
 
         // GET: Leagues/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int id, string period = "")
         {
-            var league = data.Leagues.GetById(id);
-            var season = this.data.Seasons.All().OrderByDescending(s => s.EndYear).FirstOrDefault();
+            var league = this.Data.Leagues.GetById(id);
+            Season season;
+
+            if (!String.IsNullOrEmpty(period))
+            {
+                var seasonId = Seasons.GetIdByPeriod(period);
+                season = this.Data.Seasons.GetById(seasonId);
+            }
+            else
+            {
+                season = this.Data.Seasons.All().OrderByDescending(s => s.EndYear).FirstOrDefault();                
+            }
 
             if (league == null || season == null)
             {
@@ -53,7 +67,7 @@
             var leagueSeason = LeaguesSeasons.GetLeaguesSeasons(id, season.Id);
             var roundsIds = Rounds.GetIdsByLeaguesSeasonsId(leagueSeason.Id);
             var rounds = new List<RoundsViewModel>();
-            var leaguesSeasons = this.data.LeaguesSeasons
+            var leaguesSeasons = this.Data.LeaguesSeasons
                 .All()
                 .Where(ls => ls.LeagueId == league.Id)
                 .Select(ls => new LeaguesSeasonsViewModel{ LeagueId = ls.LeagueId, StartYear = ls.Season.StartYear, EndYear = ls.Season.EndYear})
@@ -61,13 +75,12 @@
 
             foreach (var rnd in roundsIds)
             {
-                var round = this.data.Rounds.All().Project().To<RoundsViewModel>().FirstOrDefault(r => r.Id == rnd);
+                var round = this.Data.Rounds.All().Project().To<RoundsViewModel>().FirstOrDefault(r => r.Id == rnd);
                 round.LeagueName = league.Name;
                 round.Season = string.Format("{0}-{1}", season.StartYear, season.EndYear);
                 rounds.Add(round);
             }
 
-            // RedirectToAction("Index", "Rounds");
             return View(Tuple.Create(rounds, leaguesSeasons));
         }
     }

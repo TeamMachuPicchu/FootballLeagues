@@ -10,6 +10,11 @@
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "League/Season",
+                url: "{controller}/{action}/{id}/{period}"
+                );
+
+            routes.MapRoute(
                 name: "Rounds",
                 url: "{league}/{season}/{controller}/{action}/{number}/{roundId}",
                 defaults: new { controller = "Rounds", action = "View"}

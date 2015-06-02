@@ -1,16 +1,31 @@
 ﻿namespace FootballLeagues.Web.Controllers
 {
+    using System;
     using System.Web.Mvc;
-    using Data.Common.UnitOfWork;
+    using System.Web.Routing;
 
+    using Microsoft.AspNet.Identity;
+
+    using Data.Common.UnitOfWork;
+    using Data.Models;
+
+    [HandleError]
     public abstract class BaseController : Controller
     {
-        private FootballData data;
-
-        protected FootballData Data
+        public BaseController(IFootballData data)
         {
-            get { return this.data; }
-            set { this.data = value; }
+            this.Data = data;
+        }
+
+        protected ApplicationUser User { get; set; }
+
+        protected IFootballData Data { get; set; }
+
+        protected override IAsyncResult BeginExecute(RequestContext requestContext, AsyncCallback callback, object state)
+        {
+            this.User = this.Data.ApplicationUsers.GetById(requestContext.HttpContext.User.Identity.GetUserId());
+
+            return base.BeginExecute(requestContext, callback, state);
         }
     }
 }

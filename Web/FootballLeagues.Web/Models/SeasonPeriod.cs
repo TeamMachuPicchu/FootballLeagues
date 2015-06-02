@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace FootballLeagues.Web.Models
+﻿namespace FootballLeagues.Web.Models
 {
     public class SeasonPeriod
     {

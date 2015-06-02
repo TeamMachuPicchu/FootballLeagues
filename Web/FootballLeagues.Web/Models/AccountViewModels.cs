@@ -5,7 +5,7 @@ namespace FootballLeagues.Web.Models
     public class ExternalLoginConfirmationViewModel
     {
         [Required]
-        [Display(Name = "User name")]
+        [Display(Name = "Username")]
         public string UserName { get; set; }
     }
 

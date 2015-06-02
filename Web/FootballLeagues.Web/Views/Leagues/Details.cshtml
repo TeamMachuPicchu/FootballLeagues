@@ -2,14 +2,27 @@
 
 <div class="row">
     <div class="col-lg-8">
-        @foreach (var round in Model.Item1)
-        {
-            @Html.ActionLink(String.Format("Round - {0}", round.Number), "View", "Rounds", new {roundId = round.Id, number = round.Number, season = round.Season, league = round.LeagueName}, null)
-            // <a href="@Url.Action("View", "Rounds", new {round.Number, round.Id})">Round - @round.Number</a>
-            <br/>
-        }                                                                                                             
+        @Html.Partial("DisplayTemplates/Rounds")
     </div>
     <div class="col-lg-4">
-        @Html.DropDownListFor(m => m.Item2., new SelectList(Model.Item2, "LeagueId", "EndYear"), new {@class="center-block"})
+        <div class="well bs-component">
+            <fieldset>
+                <legend>Choose season</legend>
+                @using (Html.BeginForm("Details", "Leagues", FormMethod.Get, new {@class = "form-horizontal"}))
+                {
+                    <div class="form-group col-lg-12">
+                        <select class="form-control" id="DownloadValuesId" onchange="window.location.href = this.value">
+                            @foreach (var round in Model.Item2)
+                            {
+                                <option selected="selected" value="@round.LeagueId/@string.Format("{0}-{1}", round.StartYear, round.EndYear)">@round.StartYear-@round.EndYear</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary" value="Submit"/>
+                    </div>
+                }
+            </fieldset>
+        </div>
     </div>
 </div>

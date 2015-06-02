@@ -8,6 +8,7 @@ namespace FootballLeagues.Web.App_Start
     using System.Web;
     using Data;
     using Data.Common.Repositories;
+    using Data.Common.UnitOfWork;
     using Data.Models;
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 
@@ -64,7 +65,9 @@ namespace FootballLeagues.Web.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
+
             kernel.Bind<DbContext>().To<FootballDbContext>();
+            kernel.Bind<IFootballData>().To<FootballData>();
             kernel.Bind(typeof (IRepository<League>)).To(typeof (GenericRepository<League>));
             kernel.Bind(typeof (IDeletableEntityRepository<>)).To(typeof (DeletableEntityRepository<>));
         }        

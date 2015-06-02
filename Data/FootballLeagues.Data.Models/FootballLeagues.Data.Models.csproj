@@ -62,6 +62,8 @@
     <Compile Include="Contracts\IAuditInfo.cs" />
     <Compile Include="Contracts\IDeletableEntity.cs" />
     <Compile Include="Contracts\IOrderable.cs" />
+    <Compile Include="Global\AssemblyHelpers.cs" />
+    <Compile Include="Global\GlobalConstants.cs" />
     <Compile Include="League.cs" />
     <Compile Include="LeaguesSeasons.cs" />
     <Compile Include="Manager.cs" />

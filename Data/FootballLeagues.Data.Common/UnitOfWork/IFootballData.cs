@@ -35,6 +35,8 @@
 
         IDeletableEntityRepository<Town> Towns { get;  }
 
+        IDeletableEntityRepository<LeaguesSeasons> LeaguesSeasons { get; }
+
         IDeletableEntityRepository<ApplicationUser> ApplicationUsers { get; }
 
         void SaveChanges();

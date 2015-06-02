@@ -6,8 +6,13 @@ namespace FootballLeagues.Data.Migrations
     using System.Globalization;
     using System.IO;
     using System.Linq;
+    using System.Reflection;
+    using System.Runtime.CompilerServices;
+    using Common.Global;
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
     using Models;
-    using Action = Models.Action;
+    using Models.Global;
 
     internal sealed class Configuration : DbMigrationsConfiguration<FootballDbContext>
     {
@@ -19,53 +24,14 @@ namespace FootballLeagues.Data.Migrations
 
         protected override void Seed(FootballDbContext context)
         {
-            /*using (var reader = new StreamReader(@"..\..\Files\countries.txt"))
-            {
-                while (!reader.EndOfStream)
-                {
-                    var line = reader.ReadLine();
-                    var countryAndCode = line.Split(';');
-                    var country = countryAndCode[0];
+            var directory = AssemblyHelpers.GetDirectoryForAssembly(Assembly.GetExecutingAssembly());
+            var fileLeagues = directory + "/Files/Leagues.txt";
 
-                    context.Countries.Add(new Country()
-                    {
-                        Name = country
-                    });
-                }
-            }
-
-            context.SaveChanges();
-
-            using (var reader = new StreamReader(@"..\..\Files\Leagues.txt"))
-            {
-                var country = context.Countries.FirstOrDefault(c => c.Name == "ENGLAND");
-
-                while (!reader.EndOfStream)
-                {
-                    var line = reader.ReadLine().Split(',');
-                    context.Leagues.Add(new League()
-                    {
-                        Name = line[0],
-                        Logo = line[1],
-                        Country = country
-                        
-                    });
-                }
-            }
-
-            
-            for (int startYear = 2000; startYear < 2015; startYear++)
-            {
-                var season = new Season()
-                {
-                    StartYear = startYear,
-                    EndYear = startYear + 1
-                };
-
-                context.Seasons.Add(season);
-            }
-
-            context.SaveChanges();
+            this.SeedRoles(context);
+            this.SeedUsers(context);
+            this.SeedCountries(context);
+            this.SeedLeagues(context, fileLeagues);
+            this.seedSeasons(context);
 
             var leagues = new HashSet<League>();
 
@@ -117,7 +83,8 @@ namespace FootballLeagues.Data.Migrations
 
             context.SaveChanges();
 
-            using (var parser = new StreamReader(@"..\..\Files\Teams-Towns-Stadiums-Capacity-OrderedByClub.txt"))
+            var fileTeams = directory + "/Files/Teams-Towns-Stadiums-Capacity-OrderedByClub.txt";
+            using (var parser = new StreamReader(fileTeams))
             {
                 while (!parser.EndOfStream)
                 {
@@ -146,7 +113,7 @@ namespace FootballLeagues.Data.Migrations
                     var manager = new Manager()
                     {
                         Name = managerName,
-                        Birthdate = managerBirthDate,
+                        // Birthdate = managerBirthDate,
                         Country = country
                     };
 
@@ -174,7 +141,8 @@ namespace FootballLeagues.Data.Migrations
 
             context.SaveChanges();
 
-            using (var reader = new StreamReader(@"..\..\Files\Test-Games.txt"))
+            var fileGames = directory + "/Files/Test-Games.txt";
+            using (var reader = new StreamReader(fileGames))
              {
                  var round = 1;
                  var roundGame = 0;
@@ -296,9 +264,9 @@ namespace FootballLeagues.Data.Migrations
 
                      context.Games.Add(game);
                  }
-             }*/
+             }
 
-            using (var reader = new StreamReader(@"..\..\Files\Players.txt"))
+            /*using (var reader = new StreamReader(@"..\..\Files\Players.txt"))
             {
                 while (!reader.EndOfStream)
                 {
@@ -372,37 +340,124 @@ namespace FootballLeagues.Data.Migrations
 
                     var game =
                         context.Games.FirstOrDefault(g => g.HomeTeam.Name == homeTeam && g.AwayTeam.Name == awayTeam && g.Round.LeagueSeason.Season.EndYear == 2012);
-                    /*var actions = new Dictionary<Object, int>();*/
+                    /*
                     var actions = Enum.GetValues(typeof (Action)).Cast<Action>().ToDictionary(t => t, t=>(int)t);
-
                     
-                    if (actions.ContainsKey(Action.Assists))
-                    {
-                        actions[Action.Assists] += assists;
-                    }
+                    var actions = new Dictionary<Action, int>();
 
-                    actions[Action.Assists] += assists;
-                    actions[Action.Goal] += goals;
-                    actions[Action.PenaltyMissed] += penaltyMissed;
-                    actions[Action.PenaltySaved] += penaltySaved;
-                    actions[Action.PenaltyScored] += penaltyGoals;
-                    actions[Action.RedCard] += redCards;
-                    actions[Action.Starts] += starts;
-                    actions[Action.SubstituteIn] += subOn;
-                    actions[Action.SubstituteOut] += subOff;
-                    actions[Action.YellowCard] += yellowCards;
+                    actions.Add(Action.Assists, assists);
+                    actions.Add(Action.Goal, goals);
+                    actions.Add(Action.PenaltyMissed, penaltyMissed);
+                    actions.Add(Action.PenaltySaved, penaltySaved);
+                    actions.Add(Action.PenaltyScored, penaltyGoals);
+                    actions.Add(Action.RedCard, redCards);
+                    actions.Add(Action.Starts, starts);
+                    actions.Add(Action.SubstituteIn, subOn);
+                    actions.Add(Action.SubstituteOut, subOff);
+                    actions.Add(Action.YellowCard, yellowCards);
+                    #1#
 
                     var gameStats = new GameStats()
                     {
                         Game = game,
-                        Player = player,
-                        Actions = actions
+                        Player = player
                     };
 
                     context.GamesStats.Add(gameStats);
                     context.SaveChanges();
                 }
+            }*/
+        }
+
+        private void seedSeasons(FootballDbContext context)
+        {
+            for (int startYear = 2000; startYear < 2013; startYear++)
+            {
+                var season = new Season()
+                {
+                    StartYear = startYear,
+                    EndYear = startYear + 1
+                };
+
+                context.Seasons.Add(season);
             }
+
+            context.SaveChanges();
+        }
+
+        private void SeedLeagues(FootballDbContext context, string file)
+        {
+            using (var reader = new StreamReader(file))
+            {
+                var country = context.Countries.FirstOrDefault(c => c.Name == "ENGLAND");
+
+                while (!reader.EndOfStream)
+                {
+                    var line = reader.ReadLine().Split(',');
+                    context.Leagues.Add(new League()
+                    {
+                        Name = line[0],
+                        Logo = line[1],
+                        Country = country
+                    });
+                }
+            }
+
+            context.SaveChanges();
+        }
+
+        private void SeedCountries(FootballDbContext context)
+        {
+            if (context.Countries.Any())
+            {
+                return;
+            }
+
+            var directory = AssemblyHelpers.GetDirectoryForAssembly(Assembly.GetExecutingAssembly());
+            var file = directory + "/Files/countries.txt";
+            using (var reader = new StreamReader(file))
+            {
+                while (!reader.EndOfStream)
+                {
+                    var line = reader.ReadLine();
+                    var countryAndCode = line.Split(';');
+                    var country = countryAndCode[0];
+
+                    context.Countries.Add(new Country()
+                    {
+                        Name = country
+                    });
+                }
+            }
+
+            context.SaveChanges();
+        }
+
+        private void SeedUsers(FootballDbContext context)
+        {
+            var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+
+            if (!context.Users.Any(u => u.UserName == "Admin"))
+            {
+                var admin = new ApplicationUser
+                {
+                    UserName = "Admin"
+                };
+
+                userManager.Create(admin, "password");
+                userManager.AddToRole(admin.Id, GlobalConstants.AdministratorRole);
+            }
+        }
+
+        private void SeedRoles(FootballDbContext context)
+        {
+            if (context.Roles.Any(r => r.Name == GlobalConstants.AdministratorRole))
+            {
+                return;
+            }
+
+            context.Roles.AddOrUpdate(x => x.Name, new IdentityRole(GlobalConstants.AdministratorRole));
+            context.SaveChanges();
         }
     }
 }

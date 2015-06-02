@@ -1,9 +1,11 @@
 ﻿namespace FootballLeagues.Data.Models
 {
-    using Contracts;
-    using Microsoft.AspNet.Identity.EntityFramework;
     using System;
     using System.ComponentModel.DataAnnotations.Schema;
+
+    using Microsoft.AspNet.Identity.EntityFramework;
+
+    using Contracts;
 
     public class ApplicationUser : IdentityUser, IAuditInfo, IDeletableEntity
     {

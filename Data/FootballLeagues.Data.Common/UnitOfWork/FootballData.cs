@@ -5,7 +5,7 @@
     using System.Data.Entity;
     using Models;
     using Repositories;
-    using FootballLeagues.Data.Models.Contracts;
+    using Models.Contracts;
 
     public class FootballData : IFootballData
     {

@@ -1,0 +1,35 @@
+﻿@model Tuple<List<FootballLeagues.Web.Models.Rounds.RoundsViewModel>, List<FootballLeagues.Web.Models.LeagueSeason.LeaguesSeasonsViewModel>>
+                                                                          
+<div class="bs-component">
+    <div class="row">
+        <div class="col-lg-2">
+            <img src="" alt="" />
+        </div>
+        <div class="col-lg-10">
+            <h2>@Model.Item1[0].LeagueName</h2>
+        </div>
+    </div>
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Round</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var round in Model.Item1)
+            {
+                <tr>
+                    <td class="col-lg-2">
+                        @Html.ActionLink(round.Number.ToString(), "View", "Rounds", new { roundId = round.Id, number = round.Number, season = round.Season, league = round.LeagueName }, null)
+                        @*<a href="@Url.Action("View", "Rounds", new {round.Number, round.Id})">Round - @round.Number</a>*@
+                    </td>
+                    <td class="col-lg-10">
+                        @Html.ActionLink(round.Season, "View", "Rounds", new { roundId = round.Id, number = round.Number, season = round.Season, league = round.LeagueName }, null)
+                        @*<a href="@Url.Action("View", "Rounds", new {round.Number, round.Id})">Round - @round.Number</a>*@
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
