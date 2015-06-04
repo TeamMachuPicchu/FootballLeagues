@@ -71,7 +71,7 @@ namespace FootballLeagues.Web.App_Start
             kernel.Bind<IFootballData>().To<FootballData>();
             kernel.Bind(typeof (IRepository<League>)).To(typeof (GenericRepository<League>));
             kernel.Bind(typeof (IDeletableEntityRepository<>)).To(typeof (DeletableEntityRepository<>));
-            kernel.Bind<ISanitizer>().To<HTMLSanitizer>();
+            kernel.Bind<ISanitizer>().To<Sanitizer>();
         }        
     }
 }

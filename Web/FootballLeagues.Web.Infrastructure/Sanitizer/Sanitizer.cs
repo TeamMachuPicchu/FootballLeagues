@@ -7,8 +7,9 @@
         public string Sanitize(string html)
         {
             var sanitizer = new HtmlSanitizer();
+            var result = sanitizer.Sanitize(html);
 
-            return html;
+            return result;
         }
     }
 }

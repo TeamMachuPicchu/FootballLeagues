@@ -21,10 +21,10 @@
                 .All()
                 .Project()
                 .To<CommentViewModel>()
-                .Select(c => c.TargetId == id && c.Target == target)
+                .Where(c => c.TargetId == id && c.Target == target)
                 .ToList();
 
-            return PartialView(comments);
+            return PartialView("DisplayTemplates/_GetComments",comments);
         }
 
         [ValidateAntiForgeryToken]

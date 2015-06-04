@@ -513,6 +513,7 @@
     <Content Include="Views\Shared\DisplayTemplates\News.cshtml" />
     <Content Include="Views\Comments\Post.cshtml" />
     <Content Include="Views\Comments\Get.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\_GetComments.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Utils\Models\" />
