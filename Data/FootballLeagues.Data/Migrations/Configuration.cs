@@ -388,7 +388,7 @@ namespace FootballLeagues.Data.Migrations
             //context.SaveChanges();
         }
 
-        private void seedSeasons(FootballDbContext context)
+        /*private void seedSeasons(FootballDbContext context)
         {
             for (int startYear = 2000; startYear < 2013; startYear++)
             {
@@ -482,7 +482,7 @@ namespace FootballLeagues.Data.Migrations
             context.Roles.AddOrUpdate(x => x.Name, new IdentityRole(GlobalConstants.AdministratorRole));
 
             context.SaveChanges();
-        }
+        }*/
     }
 }
 
