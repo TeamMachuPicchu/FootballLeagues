@@ -11,6 +11,7 @@
         SubstituteIn,
         SubstituteOut,
         YellowCard,
-        RedCard       
+        RedCard,
+        Played
     }
 }

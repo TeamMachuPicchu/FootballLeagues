@@ -1,9 +1,9 @@
-﻿namespace FootballLeagues.Web.Areas.User.Controllers
+﻿namespace FootballLeagues.Web.Controllers
 {
     using System.Web.Mvc;
     using Utils;
 
-    public class StatisticsController : Controller
+    public class StatsController : Controller
     {
         //
         // GET: /user/statistics/

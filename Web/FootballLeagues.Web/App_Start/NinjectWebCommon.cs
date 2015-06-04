@@ -10,6 +10,7 @@ namespace FootballLeagues.Web.App_Start
     using Data.Common.Repositories;
     using Data.Common.UnitOfWork;
     using Data.Models;
+    using Infrastructure.Sanitizer;
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 
     using Ninject;
@@ -70,6 +71,7 @@ namespace FootballLeagues.Web.App_Start
             kernel.Bind<IFootballData>().To<FootballData>();
             kernel.Bind(typeof (IRepository<League>)).To(typeof (GenericRepository<League>));
             kernel.Bind(typeof (IDeletableEntityRepository<>)).To(typeof (DeletableEntityRepository<>));
+            kernel.Bind<ISanitizer>().To<HTMLSanitizer>();
         }        
     }
 }

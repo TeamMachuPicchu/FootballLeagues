@@ -18,12 +18,7 @@
 
         public static List<int> GetIdsByRoundIds(List<int> roundIds)
         {
-            var ids = new List<int>();
-
-            foreach (var id in roundIds)
-            {
-                ids.AddRange(data.Games.All().Where(g => g.RoundId == id).Select(g => g.Id).ToList());
-            }
+            var ids = data.Games.All().Where(g => roundIds.Contains(g.RoundId)).Select(g => g.Id).ToList();
 
             return ids;
         }

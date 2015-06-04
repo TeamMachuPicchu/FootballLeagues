@@ -3,6 +3,7 @@
     using System.Collections;
     using Data.Models;
     using Infrastructure.Mapping;
+    using System;
 
     public class NewsViewModel : IMapFrom<News>
     {
@@ -15,6 +16,8 @@
         public string Image { get; set; }
 
         public string Author { get; set; }
+
+        public DateTime CreatedOn { get; set; }
 
         public IEnumerable Tags { get; set; }
     }

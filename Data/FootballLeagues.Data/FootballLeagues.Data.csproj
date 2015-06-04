@@ -68,21 +68,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Files\countries.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Files\Leagues.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Files\Players.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Files\Teams-Towns-Stadiums-Capacity-OrderedByClub.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Files\Test-Games.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Content Include="Files\countries.txt" />
+    <Content Include="Files\Leagues.txt" />
+    <Content Include="Files\Players.txt" />
+    <Content Include="Files\Teams-Towns-Stadiums-Capacity-OrderedByClub.txt" />
+    <Content Include="Files\Test-Games.txt" />
     <Content Include="Imgs\Ch-Logo.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
