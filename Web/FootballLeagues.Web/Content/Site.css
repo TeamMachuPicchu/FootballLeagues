@@ -80,7 +80,8 @@ input[type="checkbox"].input-validation-error {
 .sp-info {
     background: #44bad4;
     color: #fff;
-    font-size:12px;
+    font-size: 12px;
     border-radius: 3px;
     padding: 1px 4px;
     margin: 4px 65px 0 0;
+}
